@@ -1,0 +1,30 @@
+.bg-gradient {
+    background: linear-gradient(87deg, #24FF00 5.19%, #7BFFB0 91.04%);
+}
+
+.txt-gradient {
+    background: linear-gradient(87deg, #24FF00 5.19%, #7BFFB0 91.04%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.bg-gradientwhite {
+    background: radial-gradient(141.71% 129.73% at 5.29% -8.33%, #636363 0%, rgba(0, 0, 0, 0.00) 100%);
+}
+
+
+.sectionTitle {
+    margin-top: 32px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.sectionTitle h1 {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+}

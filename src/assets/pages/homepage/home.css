@@ -1,0 +1,46 @@
+#mainHeading {
+    margin-top: 1.25rem;
+    text-align: center;
+    font-size: 27px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  /* Special Text Span */
+  .specialText {
+    background-color: var(--Gradient);
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+  }
+  
+  /* Game Grid */
+  .gameGrid {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  /* Badge General Style */
+  .badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid lime;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: white;
+  }
+  
+  
+
+
+  .liveGamesGrid{
+    
+  }

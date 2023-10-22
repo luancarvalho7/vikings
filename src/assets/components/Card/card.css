@@ -1,0 +1,121 @@
+.cardRoom * {
+    margin: 0px;
+
+}
+
+.cardRoom {
+    cursor: pointer;
+    user-select: none;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: linear-gradient(1deg, #14210F 0.84%, #000 99.68%);;
+    border-radius: 5px;
+}
+
+.cr-stroke{
+    width: fit-content;
+    border-radius: 5px;
+    padding: 1px;
+    background: var(--stroke, linear-gradient(0deg, #C3F42F 0%, #EAE860 32.89%, rgba(255, 255, 255, 0.00) 107.02%));
+}
+/* Status Info */
+
+.status-players {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+
+    padding: 4px 8px;
+    border-radius: 999px;
+    height: fit-content;
+
+    background: linear-gradient(87deg, rgba(36, 255, 0, 0.15) 5.19%, rgba(123, 255, 176, 0.15) 91.04%);
+}
+
+.status-players p {
+    font-size: 10px;
+}
+
+.status-circle {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--Gradient, linear-gradient(87deg, #24FF00 5.19%, #7BFFB0 91.04%));
+
+}
+
+/*  
+User Profile*/
+
+.cr-userProfile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cr-userProfile img {
+    width: 31px;
+    height: 31px;
+    border-radius: 999px;
+}
+
+.cr-userProfile h1 {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* Profit */
+.cr-profit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.cr-profit h1 {
+    background: var(--Gradient, linear-gradient(87deg, #24FF00 5.19%, #7BFFB0 91.04%));
+    font-size: 14px;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.cr-profit p{
+    font-size: 10px;
+    text-align: center;
+    width: fit-content;
+    color: #C7C7C7;
+    font-weight: 400;
+}
+
+/* image */
+
+.gameImage{
+    width: 120px;
+    height: 110px;
+    border-radius: 9px;
+}
+
+/* button */
+
+.joinBtn{
+
+
+    border-radius: 999px;
+    background: var(--Gradient, linear-gradient(87deg, #9EFF00 5.19%, #FFE37B 91.04%));
+    font-weight: 600;
+    font-size: 14px;
+
+    width: 100%;
+
+    outline: none;
+    cursor: pointer;
+    border: none;
+
+    padding: 5px 30px;
+}
