@@ -8,7 +8,7 @@ export function Nav() {
             <img
                 src={logo}
                 alt="logo"
-                width={50}
+                width={150}
                 height={50}
                 sizes="100vw"
                 style={{
@@ -16,7 +16,6 @@ export function Nav() {
                 }}
                 className="logoImage"
             />
-            <h1 className="brandName">BetLion</h1>
         </div>
         <button className="vipButton bg-gradient">
             Acesso Vip

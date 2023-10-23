@@ -5,6 +5,8 @@ import { ChatStatus } from './chatStatus';
 import { Message } from './message';
 import { useState, useEffect } from 'react';
 
+import { Nav } from '../../components/navbar/nav';
+
 export function ChatPage({
     game = "",
     analystPfp = "https://i.postimg.cc/brJDBW51/icon-Analist.png",
@@ -317,6 +319,8 @@ export function ChatPage({
 
     return (
         <section id='chatPage'>
+
+            <Nav/>
 
             <ChatStatus
                 profit={profit}
