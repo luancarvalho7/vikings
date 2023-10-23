@@ -1,46 +1,69 @@
 #mainHeading {
-    margin-top: 1.25rem;
-    text-align: center;
-    font-size: 27px;
-    font-weight: bold;
-    color: white;
-  }
-  
-  /* Special Text Span */
-  .specialText {
-    background-color: var(--Gradient);
-    background-clip: text;
-    color: transparent;
-    font-weight: bold;
-  }
-  
-  /* Game Grid */
-  .gameGrid {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-  }
-  
-  /* Badge General Style */
-  .badge {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    border: 1px solid lime;
-    padding: 0.5rem 1.25rem;
-    font-size: 0.75rem;
-    font-weight: bold;
-    color: white;
-  }
-  
-  
+  margin-top: 1.25rem;
+  text-align: center;
+  font-size: 27px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Special Text Span */
+.specialText {
+  background-color: var(--Gradient);
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+
+/* Game Grid */
+.gameGrid {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* Badge General Style */
+.badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid lime;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+}
 
 
-  .liveGamesGrid{
-    
-  }
+#signalsIcon {
+
+  color: red;
+}
+
+.liveGamesGrid {
+  margin-bottom: 120px;
+}
+
+.showCards{
+  margin-top: 24px;
+}
+
+.swiper-slide{
+  margin-left: 10px;
+  width: fit-content !important;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.swiper-slide:hover{
+  transform: scale(0.98);
+}
+.swiper-slide:active{
+  transform: scale(0.93);
+}
+
+.swiper-slide:nth-child(1){
+}

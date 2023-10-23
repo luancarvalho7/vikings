@@ -12,17 +12,16 @@
     align-items: center;
     gap: 10px;
     padding: 10px;
-    background: linear-gradient(1deg, #14210F 0.84%, #000 99.68%);;
     border-radius: 5px;
-}
+
+    background: linear-gradient(0deg, #0F2114 0%, #010203 100%);}
 
 .cr-stroke{
     width: fit-content;
     border-radius: 5px;
     padding: 1px;
-    background: var(--stroke, linear-gradient(0deg, #C3F42F 0%, #EAE860 32.89%, rgba(255, 255, 255, 0.00) 107.02%));
+    background: linear-gradient(0deg, #26FF07 0%, #61FFA0 23.97%, rgba(255, 255, 255, 0.00) 85.84%);/* Status Info */
 }
-/* Status Info */
 
 .status-players {
     display: flex;
@@ -107,7 +106,6 @@ User Profile*/
 
 
     border-radius: 999px;
-    background: var(--Gradient, linear-gradient(87deg, #9EFF00 5.19%, #FFE37B 91.04%));
     font-weight: 600;
     font-size: 14px;
 

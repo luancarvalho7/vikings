@@ -1,18 +1,40 @@
 import './chat.css';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import { ChatStatus } from './chatStatus';
 import { Message } from './message';
 import { useState, useEffect } from 'react';
 
 export function ChatPage({
-    game = "Mines",
-    userPfp = "https://i.postimg.cc/brJDBW51/icon-Analist.png",
-    userName = "John Doe",
+    game = "",
+    analystPfp = "https://i.postimg.cc/brJDBW51/icon-Analist.png",
+    analyst = "John Doe",
     profit = 999999,
     onlinePlayers = 999
-  }) {
+}) {
 
-/*     DATA
- */
+
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+
+    useEffect(() => {
+        if (location.pathname === '/' && hasNavigatedAway.current) {
+            hasNavigatedAway.current = false;
+        }
+
+    }, [location]);
+
+    useEffect(()=>{
+
+        console.log(game)
+        if(game==null){
+            navigate('/')
+        }
+    }, [])
+
+    /*DATA*/
     const [message, setMessage] = useState('typing');
 
     const data = {
@@ -298,12 +320,12 @@ export function ChatPage({
 
             <ChatStatus
                 profit={profit}
-                userName={userName} 
+                analyst={analyst}
                 onlinePlayers={onlinePlayers}
-                userPfp={userPfp}
+                analystPfp={analystPfp}
             />
             <div id='todayMsgDate'> <p className='greenGradientText'> HOJE</p>  </div>
-            <Message userName={userName} userPfp={userPfp} message={message} hour={hour} />
+            <Message analyst={analyst} analystPfp={analystPfp} message={message} hour={hour} />
             <iframe src='https://go.aff.bullsbetaffiliate.com/64ep1444?source_id=app' id='iframeCasino'></iframe>
         </section>
     );

@@ -1,5 +1,12 @@
 import './home.css'
 
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+
 import { Nav } from "../../components/navbar/nav";
 import { Badge } from '../../components/buttons/badge';
 
@@ -9,11 +16,51 @@ import rocket from '../../images/svg/rocket.svg'
 import slots from '../../images/svg/slots.svg'
 
 import signals from '../../images/svg/signals.svg'
+import { Card } from '../../components/Card/card';
+import { useState, useEffect, useRef } from 'react';
 
 
 
 
-export function Home() {
+export function Home({ data, selectedGame, setSGame, }) {
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    const hasNavigatedAway = useRef(false);
+
+
+
+    useEffect(() => {
+
+        if (selectedGame.game != null) {
+
+            console.log('backtohome')
+            navigate('/chat');
+            hasNavigatedAway.current = true;
+        }
+    }, [selectedGame])
+
+    useEffect(() => {
+        if (location.pathname === '/' && hasNavigatedAway.current) {
+            setSGame(
+                {
+                    "game": null,
+                    "vip": null,
+                    "profit": null,
+                    "analyst": null,
+                    "onlinePlayers": null,
+                    "gameImage": null,
+                    "analystPfp": null,
+                    "type": null,
+
+                }
+            );
+            hasNavigatedAway.current = false;
+        }
+    }, [location]);
+
+
+
     return (
         <section id="home">
             <Nav />
@@ -40,12 +87,57 @@ export function Home() {
                 </div>
                 <div className="liveGames">
                     <div className="sectionTitle">
-                        <img src={signals} alt="" width={22} height={22}/>
+                        <img src={signals} alt="" width={22} height={22} id="signalsIcon" />
                         <h1>Salas de operações ao vivo</h1>
                     </div>
-                    <div className="liveGamesGrid">
-                        
-                    </div>
+                    <section className="liveGamesGrid">
+
+                        {/* SHOW CARDS SPEED RUN START */}
+                        <div className="showCards">
+                            <h1 className="sc-title borderSpacing">
+                                Crash
+                            </h1>
+                            <div className="sc-view">
+                                <Swiper slidesPerView={'auto'} centeredSlides={false} spaceBetween={0} className="mySwiper">
+                                    {data.filter(game => game.type === "crash").map((current, index) =>
+                                        <SwiperSlide key={index}>
+                                            <Card data={current} setSGame={setSGame} />
+                                        </SwiperSlide>
+                                    )}
+                                </Swiper>
+                            </div>
+                        </div>
+                        <div className="showCards">
+                            <h1 className="sc-title borderSpacing">
+                                Slots
+                            </h1>
+                            <div className="sc-view">
+                                <Swiper slidesPerView={'auto'} centeredSlides={false} spaceBetween={0} className="mySwiper">
+                                    {data.filter(game => game.type === "slots").map((current, index) =>
+                                        <SwiperSlide key={index}>
+                                            <Card data={current} setSGame={setSGame} />
+                                        </SwiperSlide>
+                                    )}
+                                </Swiper>
+                            </div>
+                        </div>
+                        <div className="showCards">
+                            <h1 className="sc-title borderSpacing">
+                                Casino
+                            </h1>
+                            <div className="sc-view">
+                                <Swiper slidesPerView={'auto'} centeredSlides={false} spaceBetween={0} className="mySwiper">
+                                    {data.filter(game => game.type === "casino").map((current, index) =>
+                                        <SwiperSlide key={index}>
+                                            <Card data={current} setSGame={setSGame} />
+                                        </SwiperSlide>
+                                    )}
+                                </Swiper>
+                            </div>
+                        </div>
+                        {/* SHOW CARDS SPEED RUN END */}
+                    </section>
+
                 </div>
             </div>
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-export function Message({ userPfp, userName, message, hour }) {
+export function Message({ analystPfp, analyst, message, hour }) {
     const [dotCount, setDotCount] = useState(0);
     const [isActive, setIsActive] = useState(true);
     const [displayMessage, setDisplayMessage] = useState(message);
@@ -38,10 +38,10 @@ export function Message({ userPfp, userName, message, hour }) {
 
     return (
         <div id="message" className={`fade-pop ${isActive ? 'active' : ''}`}>
-            <img src={userPfp} alt="" id="m-userpfp" />
+            <img src={analystPfp} alt="" id="m-analystPfp" />
             <div id="m-content">
                 <div id="m-userinfo">
-                    <h1 className="greenGradientText">{userName}</h1>
+                    <h1 className="greenGradientText">{analyst}</h1>
                     <h3>+55 31 9**** ****</h3>
                 </div>
                 <p id="m-txtcontent">

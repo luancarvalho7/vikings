@@ -1,8 +1,8 @@
 export function ChatStatus({
     profit = 15352,
-    userName = "José D.",
+    analyst = "José D.",
     onlinePlayers = 100,
-    userPfp = "https://i.postimg.cc/brJDBW51/icon-Analist.png"
+    analystPfp = "https://i.postimg.cc/brJDBW51/icon-Analist.png"
 }) {
 
     const formattedProfit = (profit / 1000).toLocaleString('en-US', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
@@ -11,8 +11,8 @@ export function ChatStatus({
         <div className="ChatStatus">
             <div className="cr-left">
                 <div className="cr-userProfile">
-                    <img src={userPfp} alt="User Profile" />
-                    <h1>{userName}</h1>
+                    <img src={analystPfp} alt="User Profile" />
+                    <h1>{analyst}</h1>
                 </div>
 
                 <div className="status-players">
