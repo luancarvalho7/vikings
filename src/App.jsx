@@ -14,6 +14,8 @@ import { Card } from './assets/components/Card/card.jsx'
 import { ChatPage } from './assets/pages/chat/chat'
 import { Home } from './assets/pages/homepage/home.jsx'
 import ScrollToTop from './assets/utils/scrollToTop.jsx';
+import { Nav } from './assets/components/navbar/nav';
+import { BottomNav } from './assets/components/navbar/bottomnav';
 
 function App() {
 
@@ -37,9 +39,10 @@ function App() {
     <>
 
       <>
-
-
+     
         <Router>
+        <Nav/>
+        <BottomNav/>
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home data={data} selectedGame={selectedGame} setSGame={setSGame}/>} />
@@ -50,7 +53,6 @@ function App() {
               profit={selectedGame.profit}
               onlinePlayers={selectedGame.onlinePlayers}
             />} />
-
           </Routes>
         </Router>
       </>

@@ -18,6 +18,7 @@ import slots from '../../images/svg/slots.svg'
 import signals from '../../images/svg/signals.svg'
 import { Card } from '../../components/Card/card';
 import { useState, useEffect, useRef } from 'react';
+import { BottomNav } from '../../components/navbar/bottomnav';
 
 
 
@@ -63,7 +64,6 @@ export function Home({ data, selectedGame, setSGame, }) {
 
     return (
         <section id="home">
-            <Nav />
 
             <div>
                 <h1 id="mainHeading" className='borderSpacing'>

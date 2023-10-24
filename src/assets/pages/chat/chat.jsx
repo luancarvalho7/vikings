@@ -6,6 +6,8 @@ import { Message } from './message';
 import { useState, useEffect } from 'react';
 
 import { Nav } from '../../components/navbar/nav';
+import { Scrollbar } from '../../components/scrollbar/scrollbar';
+import { BottomNav } from '../../components/navbar/bottomnav';
 
 export function ChatPage({
     game = "",
@@ -28,10 +30,9 @@ export function ChatPage({
 
     }, [location]);
 
-    useEffect(()=>{
+    useEffect(() => {
 
-        console.log(game)
-        if(game==null){
+        if (game == null) {
             navigate('/')
         }
     }, [])
@@ -52,7 +53,7 @@ export function ChatPage({
 
 
 
-    const typingSpeed = 1000 / 3.5; // milliseconds per character
+    const typingSpeed = 1000 / 8.5; // milliseconds per character
 
     const getCrashSignal = () => {
         let results = [];
@@ -279,19 +280,28 @@ export function ChatPage({
         let timer;
         let index = 0;
         const types = ['analysis', 'announcing'];
-
+    
         const changeMessage = (currentIndex) => {
             setMessage('typing');
-
+    
             const type = types[currentIndex];
             const nextMessageData = type === 'announcing' ? generateSignal() : { finalMessage: getRandomMessage(type) };
-            const delay = nextMessageData.finalMessage.length * typingSpeed;
-
+    
+            let delay = nextMessageData.finalMessage.length * typingSpeed;
+    
+            // Check if delay is greater than 10 seconds
+            if (delay > 10000) {
+                // Randomly choose a new delay between 2 and 10 seconds
+                delay = Math.floor(Math.random() * (10000 - 5000) + 5000);
+            }
+    
+            console.log(delay);
+    
             timer = setTimeout(() => {
                 setMessage(nextMessageData.finalMessage);
-
+    
                 const nextIndex = (currentIndex + 1) % types.length;
-
+    
                 let nextDelay;
                 if (nextMessageData.timeLimit) {
                     const timeParts = nextMessageData.timeLimit.split(":");
@@ -304,24 +314,47 @@ export function ChatPage({
                 } else {
                     nextDelay = delay;
                 }
-
+    
                 timer = setTimeout(() => changeMessage(nextIndex), nextDelay);
             }, delay);
         };
-
-        timer = setTimeout(() => changeMessage(index), message.length * typingSpeed);
-
+    
+        timer = setTimeout(() => changeMessage(index), 0);
+    
         return () => {
             clearTimeout(timer);
         };
     }, []);
+    
 
+
+    useEffect(() => {
+        const handleMouseMove = (e) => {
+          const iframe = document.getElementById('iframeCasino');
+          const windowHeight = window.innerHeight;
+          const mouseY = e.clientY;
+    
+          if (windowHeight - mouseY <= 75) {
+            iframe.style.pointerEvents = 'none';  // Disable interactions with the iframe
+          } else {
+            iframe.style.pointerEvents = 'auto';  // Enable interactions with the iframe
+          }
+        };
+    
+        // Attach event listener
+        window.addEventListener('mousemove', handleMouseMove);
+    
+        // Cleanup
+        return () => {
+          window.removeEventListener('mousemove', handleMouseMove);
+        };
+      }, []); 
 
     return (
         <section id='chatPage'>
 
-            <Nav/>
-
+            <div className="iframe-overlay"></div>
+            <Scrollbar />
             <ChatStatus
                 profit={profit}
                 analyst={analyst}
