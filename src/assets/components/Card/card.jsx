@@ -1,6 +1,8 @@
 import './card.css'
 
-export function Card({data, setSGame}) {
+export function Card({ data, setSGame }) {
+
+    const vipAccess = false
     const {
         game = "",
         vip = false,
@@ -15,12 +17,24 @@ export function Card({data, setSGame}) {
     const formattedProfit = (profit / 1000).toLocaleString('en-US', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
 
     const handleCardClick = () => {
-        setSGame(data);
+
+        if (data.vip) {
+            if (vipAccess) {
+                setSGame(data);
+            }
+            else {
+                window.open("https://checkout.perfectpay.com.br/pay/PPU38CNC4TL", "_blank")
+            }
+        }
+        else {
+            setSGame(data);
+        }
+
     };
 
     return (
         <>
-            <div className="cr-stroke">
+            <div className={vip ? `cr-stroke cardDenied` : `cr-stroke`}>
                 <div className="cardRoom">
                     <div className="status-players">
                         <div className="status-circle"></div>

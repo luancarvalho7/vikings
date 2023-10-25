@@ -8,6 +8,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .ChatStatus * {
@@ -27,6 +28,7 @@
     justify-content: space-between;
     border-radius: 99px;
     padding: 8px 20px;
+    box-sizing: border-box;
     background: linear-gradient(90deg, #06070A -3.19%, #14210F 105.54%);
 }
 
@@ -153,7 +155,7 @@
 
 #iframeCasino{
     margin-top: 18px;
-    width: 90%;
+    width: 100%;
     height: 700px;
     outline: none;
     border: none;

@@ -11,7 +11,7 @@
     },
     {
         "game": "Mines",
-        "vip": true,
+        "vip": false,
         "profit": 21795,
         "analyst": "Bryan P.",
         "onlinePlayers": 200,
@@ -42,7 +42,7 @@
     },
     {
         "game": "Aviator",
-        "vip": false,
+        "vip": true,
         "profit": 17495,
         "analyst": "Ana F.",
         "onlinePlayers": 239,
@@ -52,7 +52,7 @@
     },
     {
         "game": "Aviator",
-        "vip": false,
+        "vip": true,
         "profit": 17495,
         "analyst": "Ana F.",
         "onlinePlayers": 239,
@@ -62,7 +62,7 @@
     },
     {
         "game": "Spaceman",
-        "vip": true,
+        "vip": false,
         "profit": 22294,
         "analyst": "Paulo S.",
         "onlinePlayers": 101,
@@ -102,7 +102,7 @@
     },
     {
         "game": "Roulette",
-        "vip": true,
+        "vip": false,
         "profit": 20657,
         "analyst": "Carlos R.",
         "onlinePlayers": 223,
@@ -122,7 +122,7 @@
     },
     {
         "game": "FortuneOx",
-        "vip": false,
+        "vip": true,
         "profit": 14933,
         "analyst": "João L.",
         "onlinePlayers": 79,
@@ -132,7 +132,7 @@
     },
     {
         "game": "FortuneMouse",
-        "vip": false,
+        "vip": true,
         "profit": 11473,
         "analyst": "João L.",
         "onlinePlayers": 79,
@@ -152,7 +152,7 @@
     },
     {
         "game": "DragonTiger",
-        "vip": false,
+        "vip": true,
         "profit": 13491,
         "analyst": "João O.",
         "onlinePlayers": 117,

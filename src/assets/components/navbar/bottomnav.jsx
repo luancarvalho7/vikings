@@ -58,7 +58,7 @@ export function BottomNav() {
 
     return (
         <>
-            <nav className="bottomNav bg-gradient ">
+            <nav className="bottomNav">
                 <div className="bn-content">
                     <button
                         onClick={() => switchPage('/')}

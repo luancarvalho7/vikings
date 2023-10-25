@@ -29,6 +29,40 @@ export function Home({ data, selectedGame, setSGame, }) {
     const navigate = useNavigate();
     const hasNavigatedAway = useRef(false);
 
+    console.log(data)
+
+    const GameSection = ({ title, gameType, data, setSGame, sort }) => {
+        return (
+          <div className="showCards">
+            <h1 className="sc-title borderSpacing">
+              {title}
+            </h1>
+            <div className="sc-view">
+              <Swiper slidesPerView={'auto'} centeredSlides={false} spaceBetween={0} className="mySwiper">
+                {data
+                  .filter(game => game.type === gameType)
+                  .sort((a, b) => {
+                    if (sort) {
+                      if (typeof a[sort] === 'number' && typeof b[sort] === 'number') {
+                        return b[sort] - a[sort];
+                      } else {
+                        return a[sort] === b[sort] ? 0 : a[sort] ? 1 : -1;
+                      }
+                    }
+                    return a.vip === b.vip ? 0 : a.vip ? 1 : -1;
+                  })
+                  .map((current, index) => 
+                    <SwiperSlide key={index}>
+                      <Card data={current} setSGame={setSGame} />
+                    </SwiperSlide>
+                  )
+                }
+              </Swiper>
+            </div>
+          </div>
+        );
+      };
+      
 
 
     useEffect(() => {
@@ -92,50 +126,9 @@ export function Home({ data, selectedGame, setSGame, }) {
                     </div>
                     <section className="liveGamesGrid">
 
-                        {/* SHOW CARDS SPEED RUN START */}
-                        <div className="showCards">
-                            <h1 className="sc-title borderSpacing">
-                                Crash
-                            </h1>
-                            <div className="sc-view">
-                                <Swiper slidesPerView={'auto'} centeredSlides={false} spaceBetween={0} className="mySwiper">
-                                    {data.filter(game => game.type === "crash").map((current, index) =>
-                                        <SwiperSlide key={index}>
-                                            <Card data={current} setSGame={setSGame} />
-                                        </SwiperSlide>
-                                    )}
-                                </Swiper>
-                            </div>
-                        </div>
-                        <div className="showCards">
-                            <h1 className="sc-title borderSpacing">
-                                Slots
-                            </h1>
-                            <div className="sc-view">
-                                <Swiper slidesPerView={'auto'} centeredSlides={false} spaceBetween={0} className="mySwiper">
-                                    {data.filter(game => game.type === "slots").map((current, index) =>
-                                        <SwiperSlide key={index}>
-                                            <Card data={current} setSGame={setSGame} />
-                                        </SwiperSlide>
-                                    )}
-                                </Swiper>
-                            </div>
-                        </div>
-                        <div className="showCards">
-                            <h1 className="sc-title borderSpacing">
-                                Casino
-                            </h1>
-                            <div className="sc-view">
-                                <Swiper slidesPerView={'auto'} centeredSlides={false} spaceBetween={0} className="mySwiper">
-                                    {data.filter(game => game.type === "casino").map((current, index) =>
-                                        <SwiperSlide key={index}>
-                                            <Card data={current} setSGame={setSGame} />
-                                        </SwiperSlide>
-                                    )}
-                                </Swiper>
-                            </div>
-                        </div>
-                        {/* SHOW CARDS SPEED RUN END */}
+                        <GameSection title="Crash" gameType="crash" data={data} setSGame={setSGame} sort="vip" />
+                        <GameSection title="Slots" gameType="slots" data={data} setSGame={setSGame} sort="vip" />
+                        <GameSection title="Casino" gameType="casino" data={data} setSGame={setSGame} sort="vip" />
                     </section>
 
                 </div>

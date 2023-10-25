@@ -210,7 +210,9 @@ export function ChatPage({
 
         if (game === "Roulette") {
             sinal = getRouletteSignal();
-            finalMessage = `${sinal}`
+            finalMessage = `${sinal} <br/>
+            Vcs tem até as ${timeLimit}
+            `
         }
 
         /*VIP GAMES*/
@@ -280,28 +282,28 @@ export function ChatPage({
         let timer;
         let index = 0;
         const types = ['analysis', 'announcing'];
-    
+
         const changeMessage = (currentIndex) => {
             setMessage('typing');
-    
+
             const type = types[currentIndex];
             const nextMessageData = type === 'announcing' ? generateSignal() : { finalMessage: getRandomMessage(type) };
-    
+
             let delay = nextMessageData.finalMessage.length * typingSpeed;
-    
+
             // Check if delay is greater than 10 seconds
             if (delay > 10000) {
                 // Randomly choose a new delay between 2 and 10 seconds
                 delay = Math.floor(Math.random() * (10000 - 5000) + 5000);
             }
-    
+
             console.log(delay);
-    
+
             timer = setTimeout(() => {
                 setMessage(nextMessageData.finalMessage);
-    
+
                 const nextIndex = (currentIndex + 1) % types.length;
-    
+
                 let nextDelay;
                 if (nextMessageData.timeLimit) {
                     const timeParts = nextMessageData.timeLimit.split(":");
@@ -314,44 +316,44 @@ export function ChatPage({
                 } else {
                     nextDelay = delay;
                 }
-    
+
                 timer = setTimeout(() => changeMessage(nextIndex), nextDelay);
             }, delay);
         };
-    
+
         timer = setTimeout(() => changeMessage(index), 0);
-    
+
         return () => {
             clearTimeout(timer);
         };
     }, []);
-    
+
 
 
     useEffect(() => {
         const handleMouseMove = (e) => {
-          const iframe = document.getElementById('iframeCasino');
-          const windowHeight = window.innerHeight;
-          const mouseY = e.clientY;
-    
-          if (windowHeight - mouseY <= 75) {
-            iframe.style.pointerEvents = 'none';  // Disable interactions with the iframe
-          } else {
-            iframe.style.pointerEvents = 'auto';  // Enable interactions with the iframe
-          }
+            const iframe = document.getElementById('iframeCasino');
+            const windowHeight = window.innerHeight;
+            const mouseY = e.clientY;
+
+            if (windowHeight - mouseY <= 75) {
+                iframe.style.pointerEvents = 'none';  // Disable interactions with the iframe
+            } else {
+                iframe.style.pointerEvents = 'auto';  // Enable interactions with the iframe
+            }
         };
-    
+
         // Attach event listener
         window.addEventListener('mousemove', handleMouseMove);
-    
+
         // Cleanup
         return () => {
-          window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('mousemove', handleMouseMove);
         };
-      }, []); 
+    }, []);
 
     return (
-        <section id='chatPage'>
+        <section id='chatPage' className='borderSpacing'>
 
             <div className="iframe-overlay"></div>
             <Scrollbar />
