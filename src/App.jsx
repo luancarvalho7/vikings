@@ -38,34 +38,64 @@ function App() {
   function randomizeGamesData(gamesData, index) {
 
 
-
     const today = new Date();
+    const month = today.getMonth()
     const day = today.getDate();
     const hours = today.getHours();
     const minutes = today.getMinutes();
     const fiveMinuteBlocks = Math.floor(minutes / 5);
 
+    const checkIsOpen = () => {
+      if (gamesData.vip) {
+        return true
+      } else {
+        if (hours < 21 && hours > 9) {
+          return true
+        }
+        else {
+          return false
+        }
+      }
+    }
+    const isOpen = checkIsOpen()
+
     // Create a seed that combines the day, hour, and the current 5-minute block, and index
-    const seed = `${day.toString()}${hours.toString()}${fiveMinuteBlocks.toString()}${index}`;
+    const seed = `${month.toString()}${day.toString()}${hours.toString()}${fiveMinuteBlocks.toString()}${index}`;
 
     const rng = seedrandom(seed);
     const randomFactor = rng();
 
     // Generate a random factor for deltaPlayers that varies between 0.1 and 0.4
     const deltaFactor = 0.1 + (0.4 - 0.1) * rng();
-
     const deltaPlayers = gamesData.onlinePlayers * deltaFactor;
 
-    const randomizedPlayers = gamesData.onlinePlayers + Math.floor((deltaPlayers * 2 * randomFactor) - deltaPlayers);
+    //Randomize Players When OPEN && 0 when closed
+    const getRandomizedPlayers = () => {
+      if (isOpen) {
+        return gamesData.onlinePlayers + Math.floor((deltaPlayers * 2 * randomFactor) - deltaPlayers);
+      } else {
+        return 0
+      }
+    };
 
+    const randomizedPlayers = getRandomizedPlayers();
 
     /* PROFIT NOT 100% */
-    const deltaProfit = gamesData.profit * deltaFactor
-    const randomizedProfit = gamesData.profit + Math.floor((deltaProfit * 2 * randomFactor) - deltaProfit);
+
+    const profitSeed = `${month.toString()}${day.toString()}${index}`;
+
+    const profitRng = seedrandom(profitSeed);
+    const randomProfitFactor = profitRng();
+
+    const deltaProfitFactor = 0.1 + (0.4 - 0.1) * profitRng();
+    const deltaProfit = gamesData.profit * deltaProfitFactor
+
+    const randomizedProfit = gamesData.profit + Math.floor((deltaProfit * 2 * randomProfitFactor) - deltaProfit);
+
+    console.log(randomizedProfit)
 
 
 
-    ;
 
 
 
@@ -84,7 +114,6 @@ function App() {
       };
     });
 
-    console.log(newGamesData)
     setGamesData(newGamesData);
   }, []);
 
