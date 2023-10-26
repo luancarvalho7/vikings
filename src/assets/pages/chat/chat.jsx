@@ -214,7 +214,7 @@ export function ChatPage({
             
             Tigrinho tá pagando muitoo <br/>
             ${sinal} <br/>
-            jogem até as ${timeLimit}
+            joguem até as ${timeLimit}
             `
         }
 
