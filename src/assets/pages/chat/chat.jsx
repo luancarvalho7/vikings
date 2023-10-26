@@ -14,7 +14,9 @@ export function ChatPage({
     analystPfp = "https://i.postimg.cc/brJDBW51/icon-Analist.png",
     analyst = "John Doe",
     profit = 999999,
-    onlinePlayers = 999
+    onlinePlayers = 999,
+    affLink = "https://go.aff.bullsbetaffiliate.com/64ep1444?source_id=app",
+    v33 = false
 }) {
 
 
@@ -24,8 +26,10 @@ export function ChatPage({
 
 
     useEffect(() => {
-        if (location.pathname === '/' && hasNavigatedAway.current) {
+        if (location.pathname === '/' || location.pathname === '/v33' && hasNavigatedAway.current) {
+            
             hasNavigatedAway.current = false;
+            console.log('xxxxxzzzz')
         }
 
     }, [location]);
@@ -33,7 +37,13 @@ export function ChatPage({
     useEffect(() => {
 
         if (game == null) {
-            navigate('/')
+            if(v33){
+                navigate('/v33')
+            }
+            else{
+                navigate('/')
+            }
+            
         }
     }, [])
 
@@ -365,7 +375,7 @@ export function ChatPage({
             />
             <div id='todayMsgDate'> <p className='greenGradientText'> HOJE</p>  </div>
             <Message analyst={analyst} analystPfp={analystPfp} message={message} hour={hour} />
-            <iframe src='https://go.aff.bullsbetaffiliate.com/64ep1444?source_id=app' id='iframeCasino'></iframe>
+            <iframe src={affLink} id='iframeCasino'></iframe>
         </section>
     );
 }

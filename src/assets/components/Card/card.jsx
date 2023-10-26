@@ -1,8 +1,9 @@
 import './card.css'
 
-export function Card({ data, setSGame }) {
+export function Card({ data, setSGame, vipAccess=false }) {
 
-    const vipAccess = false
+
+
     const {
         game = "",
         vip = false,
@@ -14,7 +15,10 @@ export function Card({ data, setSGame }) {
     } = data || {};  // Default to an empty object if data is null or undefined
 
     // Format the profit
-    const formattedProfit = (profit / 1000).toLocaleString('en-US', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+
+
+
+    const formattedProfit = profit < 1000 ? profit.toString() : (profit / 1000).toLocaleString('en-US', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
 
     const handleCardClick = () => {
 
@@ -34,7 +38,7 @@ export function Card({ data, setSGame }) {
 
     return (
         <>
-            <div className={vip ? `cr-stroke cardDenied` : `cr-stroke`}>
+            <div className={vipAccess ? 'cr-stroke' : (vip ? 'cr-stroke cardDenied' : 'cr-stroke ')}>
                 <div className="cardRoom">
                     <div className="status-players">
                         <div className="status-circle"></div>

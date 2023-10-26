@@ -22,6 +22,8 @@ function App() {
 
 
   const [gamesData, setGamesData] = useState(data)
+  const [affLink, setAffLink] = useState("https://go.aff.bullsbetaffiliate.com/64ep1444?source_id=app")
+  const [v33, setV33] = useState(false)
 
   const [selectedGame, setSGame] = useState({
 
@@ -34,6 +36,7 @@ function App() {
     "analystPfp": null,
 
   })
+
 
   function randomizeGamesData(gamesData, index) {
 
@@ -92,14 +95,68 @@ function App() {
 
     const randomizedProfit = gamesData.profit + Math.floor((deltaProfit * 2 * randomProfitFactor) - deltaProfit);
 
-    console.log(randomizedProfit)
+    const calculateCurrentValue = (maxValue = 1000, overrideHour = null, vip = false) => {
+      const now = new Date();
+      const hours = overrideHour !== null ? overrideHour : now.getHours() + now.getMinutes() / 60;
+      const minutes = now.getMinutes();
+      const rng = seedrandom(`${now.getDate()}${hours}${minutes}`);
+
+      const applyVariation = (value) => {
+        const variation = 0.02 * rng() - 0.01;
+        return value + value * variation;
+      };
+
+      let tempValue = 0;
+
+      if (vip) {
+
+        if (hours === 0) {
+          tempValue = 0
+        } else if (hours > 0 && hours < 2) {
+          tempValue = ((maxValue / 6) * hours) / 2; // Increase faster from 0 to 2
+        } else if (hours >= 2 && hours < 9) {
+          tempValue = maxValue / 6 + ((maxValue / 6) * (hours - 2)) / 7; // Increase from 2 to 9
+        } else if (hours >= 9 && hours < 12) {
+          tempValue = maxValue / 3 + ((maxValue / 6) * (hours - 9)) / 3; // Increase from 9 to 12
+        } else if (hours >= 12 && hours < 18) {
+          tempValue = maxValue / 2 + ((maxValue / 6) * (hours - 12)) / 6; // Increase from 12 to 18
+        } else if (hours >= 18 && hours < 22) {
+          tempValue = (2 * maxValue) / 3 + ((maxValue / 6) * (hours - 18)) / 4; // Increase from 18 to 22
+        } else if (hours >= 22 && hours <= 23) {
+          tempValue = (5 * maxValue) / 6 + (maxValue / 6) * (hours - 22); // Increase from 22 to 23 to reach max value
+        }
+
+      } else {
+        if (hours >= 0 && hours < 9) {
+          tempValue = 0;
+        } else if (hours >= 9 && hours < 12) {
+          tempValue = (maxValue / 3) + ((maxValue / 6) * (hours - 9)) / 3; // Increase from 9 to 12
+        } else if (hours >= 12 && hours < 18) {
+          tempValue = (maxValue / 2) + ((maxValue / 6) * (hours - 12)) / 6; // Increase from 12 to 18
+        } else if (hours >= 18 && hours < 21) {
+          tempValue = (2 * maxValue / 3) + ((maxValue / 6) * (hours - 18)) / 3; // Increase from 18 to 21
+        } else if (hours >= 21) {
+          tempValue = maxValue;
+        }
+      }
+
+      tempValue = applyVariation(tempValue);
+
+      if (minutes >= 0 && minutes < 10) {
+        const decreaseFactor = 0.02 * rng();
+        tempValue *= 1 - decreaseFactor;
+      }
+
+      tempValue = Math.min(tempValue, maxValue);
+
+      return (Math.floor(tempValue));
+    };
 
 
+    const currentProfit = calculateCurrentValue(randomizedProfit, null, gamesData.vip)
 
 
-
-
-    return { onlinePlayers: randomizedPlayers, profit: gamesData.profit };
+    return { onlinePlayers: randomizedPlayers, profit: currentProfit };
   }
 
   useEffect(() => {
@@ -117,23 +174,30 @@ function App() {
     setGamesData(newGamesData);
   }, []);
 
+  useEffect(()=>{
+    console.log(v33)
+  }, [v33])
+
   return (
     <>
 
       <>
 
         <Router>
-          <Nav />
-          <BottomNav />
+          <Nav v33={v33}/>
+          <BottomNav v33={v33}/>
           <ScrollToTop />
           <Routes>
-            <Route path="/" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} />} />
+            <Route path="/" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={false} setAffLink={setAffLink} setV33={setV33}/>} />
+            <Route path="/v33" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33}/>} />
             <Route path="/chat" element={<ChatPage
               game={selectedGame.game}
               analystPfp={selectedGame.analystPfp}
               analyst={selectedGame.analyst}
               profit={selectedGame.profit}
               onlinePlayers={selectedGame.onlinePlayers}
+              affLink={affLink}
+              v33={v33}
             />} />
           </Routes>
         </Router>

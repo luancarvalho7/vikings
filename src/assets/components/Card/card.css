@@ -14,43 +14,57 @@
     padding: 10px;
     border-radius: 5px;
 
-    background: linear-gradient(0deg, #0F2114 0%, #010203 100%);}
+    background: linear-gradient(0deg, #0F2114 0%, #010203 100%);
+}
 
-.cr-stroke{
+.cr-stroke {
     width: fit-content;
     border-radius: 5px;
     padding: 1px;
-    background: linear-gradient(0deg, #26FF07 0%, #61FFA0 23.97%, rgba(255, 255, 255, 0.00) 85.84%);/* Status Info */
+    background: linear-gradient(0deg, #26FF07 0%, #61FFA0 23.97%, rgba(255, 255, 255, 0.00) 85.84%);
+    /* Status Info */
 }
 
-.cardDenied{
+.cardDenied {
     background: linear-gradient(0deg, #7B7B7C 0%, #141416 74.47%);
 }
-.cardDenied .cardRoom{
+
+.cardDenied .cardRoom {
     background: linear-gradient(0deg, #1A1A1A 0%, #030305 49.8%);
 }
-.cardDenied .cardRoom .joinBtn{
+
+.cardDenied .cardRoom .joinBtn {
     background: linear-gradient(87deg, #FFF 5.19%, #D3D3D3 91.04%);
 }
+
 @keyframes pulse {
     0% {
-      filter: saturate(0.20);
+        filter: saturate(0.20);
     }
+
     50% {
-      filter: saturate(0);
+        filter: saturate(0);
     }
+
     100% {
-      filter: saturate(0.20);
+        filter: saturate(0.20);
     }
-  }
+}
 
 
-  
-  .cardDenied .gameImage {
+
+.cardDenied .gameImage {
     transform: scale(1);
     filter: saturate(0);
     animation: pulse 2s infinite;
-  }
+}
+
+.cardDenied .cr-profit h1,
+.cardDenied .status-players,
+.cardDenied .cr-userProfile {
+    filter: saturate(0);
+}
+
 
 .status-players {
     display: flex;
@@ -99,11 +113,11 @@ User Profile*/
 }
 
 /* Profit */
-.cr-profit{
+.cr-profit {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
 }
 
 .cr-profit h1 {
@@ -113,7 +127,8 @@ User Profile*/
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.cr-profit p{
+
+.cr-profit p {
     font-size: 10px;
     text-align: center;
     width: fit-content;
@@ -123,7 +138,7 @@ User Profile*/
 
 /* image */
 
-.gameImage{
+.gameImage {
     width: 120px;
     height: 110px;
     border-radius: 9px;
@@ -131,7 +146,7 @@ User Profile*/
 
 /* button */
 
-.joinBtn{
+.joinBtn {
 
 
     border-radius: 999px;
