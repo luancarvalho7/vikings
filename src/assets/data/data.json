@@ -1,7 +1,7 @@
 [
     {
         "game": "NinjaCrash",
-        "vip": true,
+        "vip": false,
         "profit": 15996,
         "analyst": "Luiz R.",
         "onlinePlayers": 58,
