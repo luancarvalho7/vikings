@@ -74,8 +74,8 @@ export function BottomNav({ v33, vipAccess = false }) {
             <nav className="bottomNav">
                 <div className="bn-content">
                     <button
-                        onClick={() => switchPage(v33 ? '/v33' : '/')}
-                        className={`bn-btn ${selected === '/' || selected === '/v33' ? 'bn-selected' : ''}`}
+                        onClick={() => switchPage(v33 ? '/v33' : (vipAccess ? '/viplion' :'/'))}
+                        className={`bn-btn ${selected === '/' || selected === '/v33' || selected === '/viplion' ? 'bn-selected' : ''}`}
                     >
                         <Game />
                         <h3>Salas</h3>

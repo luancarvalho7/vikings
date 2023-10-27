@@ -1,6 +1,6 @@
 import './badge.css';
 
-export function Badge({ img, txt = "", extra = 0 }) {
+export function Badge({ img, txt = "", extra = 0, setCategory }) {
 
     let extraBadge;
 
@@ -18,9 +18,16 @@ export function Badge({ img, txt = "", extra = 0 }) {
         );
     }
 
+    const onClickBtn = ()=>{
+
+        if(extra!=2){
+            setCategory(txt)
+
+        }
+    }
 
     return (
-        <div className={ extra===2 ? `btnBadge bg-gradientwhite`:  `btnBadge bg-gradient` }>
+        <div className={ extra===2 ? `btnBadge bg-gradientwhite`:  `btnBadge bg-gradient` } onClick={onClickBtn}>
             <div className="bd-content">
                 <img src={img} alt="" />
                 <h1>{txt}</h1>

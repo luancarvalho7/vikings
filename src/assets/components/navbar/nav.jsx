@@ -11,6 +11,10 @@ export function Nav({ v33, vipAccess = false }) {
         if (v33) {
             navigate('/v33')
         }
+        else if(vipAccess){
+            navigate('/viplion')
+
+        }
         else {
             navigate('/')
         }

@@ -23,8 +23,7 @@ import { useState, useEffect, useRef } from 'react';
 
 export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLink, setV33, setVipAccess }) {
 
-
-
+  const [category, setCategory] = useState(null)
   const location = useLocation();
   const navigate = useNavigate();
   const hasNavigatedAway = useRef(false);
@@ -61,6 +60,33 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
     );
   };
 
+  const GameCategorySection = ({ title, gameType, data, setSGame, sort }) => {
+    return (
+      <section className="categorysection">
+        <h1 className="sc-title borderSpacing">
+          {title}
+        </h1>
+        <div className="category-view">
+          {data
+            .filter(game => game.type === gameType)
+            .sort((a, b) => {
+              if (sort) {
+                if (typeof a[sort] === 'number' && typeof b[sort] === 'number') {
+                  return b[sort] - a[sort];
+                } else {
+                  return a[sort] === b[sort] ? 0 : a[sort] ? 1 : -1;
+                }
+              }
+              return a.vip === b.vip ? 0 : a.vip ? 1 : -1;
+            })
+            .map((current, index) =>
+              <Card data={current} setSGame={setSGame} vipAccess={vipAccess} key={index} />
+            )
+          }
+        </div>
+      </section>
+    );
+  };
 
 
   useEffect(() => {
@@ -86,21 +112,36 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
 
         }
       );
+      setCategory(null)
       hasNavigatedAway.current = false;
     }
   }, [location]);
 
   useEffect(() => {
-    if(location.pathname == '/viplion'){
+    if (location.pathname == '/viplion') {
       setVipAccess(true)
     }
-    if (location.pathname == '/v33') { 
+    if (location.pathname == '/v33') {
       setV33(true)
-      setAffLink("https://afiliado.realsbet.com/visit/?bta=45724&brand=realsbet&afp=app") }
-    if (location.pathname == '/') { 
+      setAffLink("https://afiliado.realsbet.com/visit/?bta=45724&brand=realsbet&afp=app")
+    }
+    if (location.pathname == '/') {
       setV33(false)
-      setAffLink("https://go.aff.bullsbetaffiliate.com/64ep1444?source_id=app") }
+      setAffLink("https://go.aff.bullsbetaffiliate.com/64ep1444?source_id=app")
+    }
   }, [])
+
+
+  const checkedCategory = () => {
+    if (category == 'Cassino') {
+      return ('casino')
+    } else if (category == 'Crash') {
+      return 'crash'
+    }
+    else if (category == 'Slots') {
+      return 'slots'
+    }
+  }
 
   return (
     <section id="home">
@@ -115,27 +156,29 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
           hoje?
         </h1>
         <div className="gameGrid borderSpacing" >
-          {<Badge img={rocket} txt={"Crash"} extra={0} />}
+          {<Badge img={rocket} txt={"Crash"} extra={0} setCategory={setCategory} />}
 
-          {<Badge img={slots} txt={"Slots"} extra={0} />}
+          {<Badge img={slots} txt={"Slots"} extra={0} setCategory={setCategory} />}
 
+          {<Badge img={playingcards} txt={"Cassino"} extra={1} setCategory={setCategory} />}
 
-          {<Badge img={playingcards} txt={"Cassino"} extra={1} />}
-
-          {<Badge img={ball} txt={"Esportes"} extra={2} />}
-
+          {<Badge img={ball} txt={"Esportes"} extra={2} setCategory={setCategory} />}
         </div>
         <div className="liveGames">
           <div className="sectionTitle">
             <img src={signals} alt="" width={22} height={22} id="signalsIcon" />
             <h1>Salas de operações ao vivo</h1>
           </div>
-          <section className="liveGamesGrid">
+          {
+            category == null ? <section className="liveGamesGrid">
+              <GameSection title="Crash" gameType="crash" data={data} setSGame={setSGame} sort="vip" />
+              <GameSection title="Slots" gameType="slots" data={data} setSGame={setSGame} sort="vip" />
+              <GameSection title="Casino" gameType="casino" data={data} setSGame={setSGame} sort="vip" />
+            </section> : ''
+          }
 
-            <GameSection title="Crash" gameType="crash" data={data} setSGame={setSGame} sort="vip" />
-            <GameSection title="Slots" gameType="slots" data={data} setSGame={setSGame} sort="vip" />
-            <GameSection title="Casino" gameType="casino" data={data} setSGame={setSGame} sort="vip" />
-          </section>
+          <GameCategorySection title={category} gameType={checkedCategory()} data={data} setSGame={setSGame} sort="vip" />
+
 
         </div>
       </div>
