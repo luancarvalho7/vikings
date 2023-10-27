@@ -7,7 +7,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-import { Nav } from "../../components/navbar/nav";
 import { Badge } from '../../components/buttons/badge';
 
 import ball from '../../images/svg/ball.svg'
@@ -18,12 +17,11 @@ import slots from '../../images/svg/slots.svg'
 import signals from '../../images/svg/signals.svg'
 import { Card } from '../../components/Card/card';
 import { useState, useEffect, useRef } from 'react';
-import { BottomNav } from '../../components/navbar/bottomnav';
 
 
 
 
-export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLink, setV33 }) {
+export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLink, setV33, setVipAccess }) {
 
 
 
@@ -68,15 +66,13 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
   useEffect(() => {
 
     if (selectedGame.game != null) {
-
-      console.log('backtohome')
       navigate('/chat');
       hasNavigatedAway.current = true;
     }
   }, [selectedGame])
 
   useEffect(() => {
-    if (location.pathname === '/' || location.pathname === '/v33' && hasNavigatedAway.current) {
+    if (location.pathname === '/' || location.pathname === '/v33' || location.pathname === '/viplion' && hasNavigatedAway.current) {
       setSGame(
         {
           "game": null,
@@ -95,6 +91,9 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
   }, [location]);
 
   useEffect(() => {
+    if(location.pathname == '/viplion'){
+      setVipAccess(true)
+    }
     if (location.pathname == '/v33') { 
       setV33(true)
       setAffLink("https://afiliado.realsbet.com/visit/?bta=45724&brand=realsbet&afp=app") }

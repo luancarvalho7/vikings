@@ -39,6 +39,7 @@
     text-align: center;
     color: white;
     font-size: 500;
+    text-decoration: none;
     font-size: 10px;
 }
 
@@ -50,8 +51,12 @@
     stroke: #44FF55;
 }
 
+.bn-btn a {
+    text-decoration: none;
 
+}
 .bn-btn {
+    text-decoration: none;
     transition: 1s;
     background: none;
     outline: none;

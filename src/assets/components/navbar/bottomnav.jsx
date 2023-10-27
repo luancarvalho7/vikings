@@ -2,6 +2,15 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import './bottomnav.css'
 
+const VipDmd = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 30 30" fill="none">
+            <path d="M28.4767 11.8793L21.9142 4.3793C21.8703 4.32908 21.8163 4.28879 21.7557 4.2611C21.6951 4.23342 21.6292 4.21898 21.5626 4.21875H8.43761C8.37096 4.21898 8.30513 4.23342 8.24451 4.2611C8.18388 4.28879 8.12986 4.32908 8.08604 4.3793L1.52354 11.8793C1.44724 11.9667 1.40608 12.0794 1.40803 12.1954C1.40997 12.3114 1.45489 12.4226 1.53409 12.5074L14.6591 26.5699C14.7029 26.6168 14.7559 26.6541 14.8148 26.6796C14.8736 26.7051 14.9371 26.7183 15.0013 26.7183C15.0654 26.7183 15.1289 26.7051 15.1878 26.6796C15.2466 26.6541 15.2996 26.6168 15.3435 26.5699L28.4685 12.5074C28.5473 12.4223 28.5918 12.311 28.5933 12.1949C28.5949 12.0789 28.5533 11.9664 28.4767 11.8793ZM9.05753 12.6563L13.636 24.1008L2.95323 12.6563H9.05753ZM19.9325 12.6563L15.0001 24.9879L10.0677 12.6563H19.9325ZM10.3126 11.7188L15.0001 5.46914L19.6876 11.7188H10.3126ZM20.9427 12.6563H27.047L16.3642 24.1008L20.9427 12.6563ZM27.0915 11.7188H20.8595L15.9376 5.15625H21.3493L27.0915 11.7188ZM8.65089 5.15625H14.0626L9.14073 11.7188H2.9087L8.65089 5.15625Z" fill="white" />
+        </svg>
+
+    )
+}
+
 const AprendaJogar = () => {
     return (
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -46,7 +55,7 @@ const ResgateBonus = () => {
 }
 
 
-export function BottomNav({v33}) {
+export function BottomNav({ v33, vipAccess = false }) {
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -56,12 +65,16 @@ export function BottomNav({v33}) {
         navigate(path);      // Navigate to the new route
     };
 
+    const openCheckout = () => {
+
+    }
+
     return (
         <>
             <nav className="bottomNav">
                 <div className="bn-content">
                     <button
-                        onClick={() => switchPage(v33?'/v33':'/')}
+                        onClick={() => switchPage(v33 ? '/v33' : '/')}
                         className={`bn-btn ${selected === '/' || selected === '/v33' ? 'bn-selected' : ''}`}
                     >
                         <Game />
@@ -88,6 +101,15 @@ export function BottomNav({v33}) {
                         <AprendaJogar />
                         <h3>Tutorial</h3>
                     </button>
+                    {vipAccess ? '' :
+                        <button
+                            className="bn-btn"
+                        >
+                            <a href="https://checkout.perfectpay.com.br/pay/PPU38CNC4TL" target="_blank" rel="noopener noreferrer">
+                                <VipDmd />
+                                <h3>Seja VIP</h3>
+                            </a>
+                        </button>}
                 </div>
             </nav>
         </>

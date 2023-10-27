@@ -4,7 +4,7 @@ import logo from '../../images/logo.png'
 import { useNavigate } from 'react-router-dom'
 
 
-export function Nav({ v33 }) {
+export function Nav({ v33, vipAccess = false }) {
 
     const navigate = useNavigate()
     function navigateHome() {
@@ -31,10 +31,15 @@ export function Nav({ v33 }) {
 
                 onClick={navigateHome}
             />
-        </div>
-        <a href="https://checkout.perfectpay.com.br/pay/PPU38CNC4TL" target="_blank" rel="noopener noreferrer">
-            <button className="vipButton bg-gradient">  Acesso Vip    </button>
-        </a>
+        </div>{
+            vipAccess ? <button className="vipButton bg-gradient">  Membro VIP  </button> : <a href="https://checkout.perfectpay.com.br/pay/PPU38CNC4TL" target="_blank" rel="noopener noreferrer">
+                <button className="vipButton bg-gradient">  Acesso VIP    </button>
+            </a>
+
+        }
+
+
+
 
 
     </header >

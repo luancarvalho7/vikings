@@ -2,7 +2,7 @@
     {
         "game": "NinjaCrash",
         "vip": false,
-        "profit": 15996,
+        "profit": 13000,
         "analyst": "Luiz R.",
         "onlinePlayers": 58,
         "gameImage": "https://i.postimg.cc/44F4TmXH/ninjacrash.png",
@@ -12,7 +12,7 @@
     {
         "game": "Mines",
         "vip": false,
-        "profit": 21795,
+        "profit": 10100,
         "analyst": "Bryan P.",
         "onlinePlayers": 200,
         "gameImage": "https://i.postimg.cc/pLd8rNKm/mines.webp",
@@ -20,7 +20,7 @@
         "type": "slots"
     },
     {
-        "game": "Mines",
+        "game": "Mines3x",
         "vip": true,
         "profit": 21997,
         "analyst": "Bryan Q.",
@@ -33,7 +33,7 @@
     {
         "game": "Aviator",
         "vip": false,
-        "profit": 17495,
+        "profit": 12300,
         "analyst": "Ana F.",
         "onlinePlayers": 239,
         "gameImage": "https://i.postimg.cc/dQzSGB5Q/aviator-15x.webp",
@@ -41,9 +41,9 @@
         "type": "crash"  
     },
     {
-        "game": "Aviator",
+        "game": "Aviator2x",
         "vip": true,
-        "profit": 17495,
+        "profit": 19495,
         "analyst": "Ana F.",
         "onlinePlayers": 239,
         "gameImage": "https://i.postimg.cc/vmzvj77n/aviator-2x.webp",
@@ -51,9 +51,9 @@
         "type": "crash"  
     },
     {
-        "game": "Aviator",
+        "game": "AviatorVa",
         "vip": true,
-        "profit": 17495,
+        "profit": 31495,
         "analyst": "Ana F.",
         "onlinePlayers": 239,
         "gameImage": "https://i.postimg.cc/4dx1TKwS/aviator-va.webp",
@@ -63,7 +63,7 @@
     {
         "game": "Spaceman",
         "vip": false,
-        "profit": 22294,
+        "profit": 11150,
         "analyst": "Paulo S.",
         "onlinePlayers": 101,
         "gameImage": "https://i.postimg.cc/bw9RZXCb/spaceman-15x.webp",
@@ -71,9 +71,9 @@
         "type": "crash"
     },
     {
-        "game": "Spaceman",
+        "game": "Spaceman2x",
         "vip": true,
-        "profit": 22294,
+        "profit": 26294,
         "analyst": "Paulo S.",
         "onlinePlayers": 101,
         "gameImage": "https://i.postimg.cc/t4ddZdMc/spaceman-2x.webp",
@@ -81,9 +81,9 @@
         "type": "crash"
     },
     {
-        "game": "Spaceman",
+        "game": "SpacemanVa",
         "vip": true,
-        "profit": 22294,
+        "profit": 23294,
         "analyst": "Paulo S.",
         "onlinePlayers": 101,
         "gameImage": "https://i.postimg.cc/N0g619hj/spaceman-va.webp",
@@ -93,7 +93,7 @@
     {
         "game": "FortuneTiger",
         "vip": false,
-        "profit": 11790,
+        "profit": 8000,
         "analyst": "Isabela F.",
         "onlinePlayers": 220,
         "gameImage": "https://i.postimg.cc/tCkW9Rn0/fortune-tiger.webp",
@@ -103,7 +103,7 @@
     {
         "game": "Roulette",
         "vip": false,
-        "profit": 20657,
+        "profit": 9030,
         "analyst": "Carlos R.",
         "onlinePlayers": 223,
         "gameImage": "https://i.postimg.cc/MphTSg52/Roletas-5.webp",
@@ -113,7 +113,7 @@
     {
         "game": "FortuneRabbit",
         "vip": true,
-        "profit": 10594,
+        "profit": 17894,
         "analyst": "Paulo R.",
         "onlinePlayers": 199,
         "gameImage": "https://i.postimg.cc/pLMYLcq8/fortune-rabbit.webp",
@@ -123,7 +123,7 @@
     {
         "game": "FortuneOx",
         "vip": true,
-        "profit": 14933,
+        "profit": 15933,
         "analyst": "João L.",
         "onlinePlayers": 79,
         "gameImage": "https://i.postimg.cc/cCZtNPs4/fortune-ox.webp",
@@ -133,7 +133,7 @@
     {
         "game": "FortuneMouse",
         "vip": true,
-        "profit": 11473,
+        "profit": 21473,
         "analyst": "João L.",
         "onlinePlayers": 79,
         "gameImage": "https://i.postimg.cc/4N9QZRbs/fortune-mouse.webp",
@@ -153,7 +153,7 @@
     {
         "game": "DragonTiger",
         "vip": true,
-        "profit": 13491,
+        "profit": 18491,
         "analyst": "João O.",
         "onlinePlayers": 117,
         "gameImage": "https://i.postimg.cc/ZRsxYTMK/dragon-tigger.webp",

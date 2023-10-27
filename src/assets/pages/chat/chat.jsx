@@ -16,7 +16,8 @@ export function ChatPage({
     profit = 999999,
     onlinePlayers = 999,
     affLink = "https://go.aff.bullsbetaffiliate.com/64ep1444?source_id=app",
-    v33 = false
+    v33 = false,
+    vipAccess = false
 }) {
 
 
@@ -26,10 +27,8 @@ export function ChatPage({
 
 
     useEffect(() => {
-        if (location.pathname === '/' || location.pathname === '/v33' && hasNavigatedAway.current) {
-            
+        if (location.pathname === '/' || location.pathname === '/v33' || location.pathname === '/viplion' && hasNavigatedAway.current) {
             hasNavigatedAway.current = false;
-            console.log('xxxxxzzzz')
         }
 
     }, [location]);
@@ -37,7 +36,10 @@ export function ChatPage({
     useEffect(() => {
 
         if (game == null) {
-            if(v33){
+            if(vipAccess){
+                navigate('/viplion')
+            }
+            else if(v33){
                 navigate('/v33')
             }
             else{
@@ -65,14 +67,15 @@ export function ChatPage({
 
     const typingSpeed = 1000 / 8.5; // milliseconds per character
 
-    const getCrashSignal = () => {
+    const getCrashSignal = (mode=0) => {
         let results = [];
 
         const maxValues = {
             0: 1.5,
+            1: 2.0,
+            2: 8.0,
         };
-        const propValue = 0;
-        const max = maxValues[propValue];
+        const max = maxValues[mode];
 
         const generateNumber = () => {
             let num;
@@ -93,13 +96,13 @@ export function ChatPage({
 
         return results.join('<br/>');
     };
-    const getMinesSignal = () => {
+    const getMinesSignal = (quanty) => {
         let newGrid = Array(5).fill(Array(5).fill('🟦')); // Resetting the grid
         newGrid = JSON.parse(JSON.stringify(newGrid)); // Deep copy
         let count = 0;
         const positions = [];
 
-        while (count < 5) {
+        while (count < quanty) {
             const x = Math.floor(Math.random() * 5);
             const y = Math.floor(Math.random() * 5);
             const position = `${x}-${y}`;
@@ -188,10 +191,20 @@ export function ChatPage({
                 FREE GAMES */
 
         if (game == "Mines") {
-            sinal = getMinesSignal()
+            sinal = getMinesSignal(5)
 
             finalMessage = `
-          Toma ai familia: <br/><br/>
+          Toma ai familia, lembrem de configurar 3 minas: <br/><br/>
+          ${sinal} <br/>
+          <br/>
+          Joguem até as ${timeLimit}
+        `
+        }
+        if (game == "Mines3x") {
+            sinal = getMinesSignal(4)
+
+            finalMessage = `
+          Sinalzinho pra vcss, lembrem de configurar 6 minas: <br/><br/>
           ${sinal} <br/>
           <br/>
           Joguem até as ${timeLimit}
@@ -200,6 +213,26 @@ export function ChatPage({
 
         if (game === "Aviator" || game === "Spaceman") {
             sinal = getCrashSignal();
+
+            finalMessage = `
+              Toma ai familia: <br/><br/>
+              ${sinal} <br/>
+              <br/>
+              Podem tentar 3 vezes, joguem até as ${timeLimit}
+            `;
+        }
+        if (game === "Aviator2x" || game === "Spaceman2x") {
+            sinal = getCrashSignal(1);
+
+            finalMessage = `
+              Toma ai familia: <br/><br/>
+              ${sinal} <br/>
+              <br/>
+              Podem tentar 3 vezes, joguem até as ${timeLimit}
+            `;
+        }
+        if (game === "AviatorVa" || game === "SpacemanVa") {
+            sinal = getCrashSignal(2);
 
             finalMessage = `
               Toma ai familia: <br/><br/>

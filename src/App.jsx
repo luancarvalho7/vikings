@@ -24,6 +24,7 @@ function App() {
   const [gamesData, setGamesData] = useState(data)
   const [affLink, setAffLink] = useState("https://go.aff.bullsbetaffiliate.com/64ep1444?source_id=app")
   const [v33, setV33] = useState(false)
+  const [vipAccess, setVipAccess] = useState(false)
 
   const [selectedGame, setSGame] = useState({
 
@@ -122,23 +123,26 @@ function App() {
           tempValue = maxValue / 2 + ((maxValue / 6) * (hours - 12)) / 6; // Increase from 12 to 18
         } else if (hours >= 18 && hours < 22) {
           tempValue = (2 * maxValue) / 3 + ((maxValue / 6) * (hours - 18)) / 4; // Increase from 18 to 22
-        } else if (hours >= 22 && hours <= 23) {
+        } else if (hours >= 22 && hours <= 23.9) {
           tempValue = (5 * maxValue) / 6 + (maxValue / 6) * (hours - 22); // Increase from 22 to 23 to reach max value
         }
 
       } else {
-        if (hours >= 0 && hours < 9) {
+        if (hours >= 0 && hours < 6) {
           tempValue = 0;
+        } else if (hours >= 6 && hours < 9) {
+          tempValue = (maxValue / 6) * ((hours - 6) / 3); // Increase from 6 to 9
         } else if (hours >= 9 && hours < 12) {
-          tempValue = (maxValue / 3) + ((maxValue / 6) * (hours - 9)) / 3; // Increase from 9 to 12
+          tempValue = (maxValue / 6) + ((maxValue / 6) * (hours - 9)) / 3; // Increase from 9 to 12
         } else if (hours >= 12 && hours < 18) {
-          tempValue = (maxValue / 2) + ((maxValue / 6) * (hours - 12)) / 6; // Increase from 12 to 18
+          tempValue = (maxValue / 3) + ((maxValue / 3) * (hours - 12)) / 6; // Increase from 12 to 18
         } else if (hours >= 18 && hours < 21) {
           tempValue = (2 * maxValue / 3) + ((maxValue / 6) * (hours - 18)) / 3; // Increase from 18 to 21
         } else if (hours >= 21) {
           tempValue = maxValue;
         }
       }
+      
 
       tempValue = applyVariation(tempValue);
 
@@ -174,9 +178,6 @@ function App() {
     setGamesData(newGamesData);
   }, []);
 
-  useEffect(()=>{
-    console.log(v33)
-  }, [v33])
 
   return (
     <>
@@ -184,11 +185,12 @@ function App() {
       <>
 
         <Router>
-          <Nav v33={v33}/>
-          <BottomNav v33={v33}/>
+          <Nav v33={v33} vipAccess={vipAccess}/>
+          <BottomNav v33={v33} vipAccess={vipAccess}/>
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={false} setAffLink={setAffLink} setV33={setV33}/>} />
+            <Route path="/viplion" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} setVipAccess={setVipAccess}  /> } />
             <Route path="/v33" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33}/>} />
             <Route path="/chat" element={<ChatPage
               game={selectedGame.game}
@@ -198,6 +200,7 @@ function App() {
               onlinePlayers={selectedGame.onlinePlayers}
               affLink={affLink}
               v33={v33}
+              vipAccess={vipAccess}
             />} />
           </Routes>
         </Router>
