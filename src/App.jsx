@@ -21,12 +21,15 @@ import { BottomNav } from './assets/components/navbar/bottomnav';
 function App() {
 
 
+  const [vipGamesData, setVipGamesData] = useState(data)
   const [gamesData, setGamesData] = useState(data)
   const [affLink, setAffLink] = useState("https://go.aff.bullsbetaffiliate.com/64ep1444?source_id=app")
   const [v33, setV33] = useState(false)
   const [vipAccess, setVipAccess] = useState(false)
 
+
   const [selectedGame, setSGame] = useState({
+
 
     "game": null,
     "vip": null,
@@ -39,7 +42,9 @@ function App() {
   })
 
 
-  function randomizeGamesData(gamesData, index) {
+
+
+  function randomizeGamesData(gamesData, index, vipAccess) {
 
 
     const today = new Date();
@@ -97,6 +102,8 @@ function App() {
     const randomizedProfit = gamesData.profit + Math.floor((deltaProfit * 2 * randomProfitFactor) - deltaProfit);
 
     const calculateCurrentValue = (maxValue = 1000, overrideHour = null, vip = false) => {
+
+
       const now = new Date();
       const hours = overrideHour !== null ? overrideHour : now.getHours() + now.getMinutes() / 60;
       const minutes = now.getMinutes();
@@ -109,7 +116,7 @@ function App() {
 
       let tempValue = 0;
 
-      if (vip) {
+      if (vipAccess) {
 
         if (hours === 0) {
           tempValue = 0
@@ -127,22 +134,45 @@ function App() {
           tempValue = (5 * maxValue) / 6 + (maxValue / 6) * (hours - 22); // Increase from 22 to 23 to reach max value
         }
 
+
+
       } else {
-        if (hours >= 0 && hours < 6) {
-          tempValue = 0;
-        } else if (hours >= 6 && hours < 9) {
-          tempValue = (maxValue / 6) * ((hours - 6) / 3); // Increase from 6 to 9
-        } else if (hours >= 9 && hours < 12) {
-          tempValue = (maxValue / 6) + ((maxValue / 6) * (hours - 9)) / 3; // Increase from 9 to 12
-        } else if (hours >= 12 && hours < 18) {
-          tempValue = (maxValue / 3) + ((maxValue / 3) * (hours - 12)) / 6; // Increase from 12 to 18
-        } else if (hours >= 18 && hours < 21) {
-          tempValue = (2 * maxValue / 3) + ((maxValue / 6) * (hours - 18)) / 3; // Increase from 18 to 21
-        } else if (hours >= 21) {
-          tempValue = maxValue;
+
+        if (vip) {
+
+          if (hours === 0) {
+            tempValue = 0
+          } else if (hours > 0 && hours < 2) {
+            tempValue = ((maxValue / 6) * hours) / 2; // Increase faster from 0 to 2
+          } else if (hours >= 2 && hours < 9) {
+            tempValue = maxValue / 6 + ((maxValue / 6) * (hours - 2)) / 7; // Increase from 2 to 9
+          } else if (hours >= 9 && hours < 12) {
+            tempValue = maxValue / 3 + ((maxValue / 6) * (hours - 9)) / 3; // Increase from 9 to 12
+          } else if (hours >= 12 && hours < 18) {
+            tempValue = maxValue / 2 + ((maxValue / 6) * (hours - 12)) / 6; // Increase from 12 to 18
+          } else if (hours >= 18 && hours < 22) {
+            tempValue = (2 * maxValue) / 3 + ((maxValue / 6) * (hours - 18)) / 4; // Increase from 18 to 22
+          } else if (hours >= 22 && hours <= 23.9) {
+            tempValue = (5 * maxValue) / 6 + (maxValue / 6) * (hours - 22); // Increase from 22 to 23 to reach max value
+          }
+
+        } else {
+          if (hours >= 0 && hours < 6) {
+            tempValue = 0;
+          } else if (hours >= 6 && hours < 9) {
+            tempValue = (maxValue / 6) * ((hours - 6) / 3); // Increase from 6 to 9
+          } else if (hours >= 9 && hours < 12) {
+            tempValue = (maxValue / 6) + ((maxValue / 6) * (hours - 9)) / 3; // Increase from 9 to 12
+          } else if (hours >= 12 && hours < 18) {
+            tempValue = (maxValue / 3) + ((maxValue / 3) * (hours - 12)) / 6; // Increase from 12 to 18
+          } else if (hours >= 18 && hours < 21) {
+            tempValue = (2 * maxValue / 3) + ((maxValue / 6) * (hours - 18)) / 3; // Increase from 18 to 21
+          } else if (hours >= 21) {
+            tempValue = maxValue;
+          }
         }
       }
-      
+
 
       tempValue = applyVariation(tempValue);
 
@@ -164,19 +194,44 @@ function App() {
   }
 
   useEffect(() => {
-    const newGamesData = gamesData.map((gamesData, index) => {
-      const { onlinePlayers, profit } = randomizeGamesData(gamesData, index);
 
+    if (vipAccess) {
+      const newGamesData = vipGamesData.map((gameData, index) => {
+        const vip = true; // Setting vip to true
+        const { onlinePlayers, profit } = randomizeGamesData({ ...gameData, vip }, index, vipAccess);
+        // Note: Now randomizeGamesData will get the updated vip status.
 
-      return {
-        ...gamesData,
-        onlinePlayers,
-        profit
-      };
-    });
+        return {
+          ...gameData,
+          vip, // Setting vip to true for all items
+          onlinePlayers,
+          profit
+        };
 
-    setGamesData(newGamesData);
-  }, []);
+      });
+      console.log(newGamesData)
+        ; // Logging the new array, not the old one
+      setGamesData(newGamesData);
+    }
+    else {
+      const newGamesData = gamesData.map((gameData, index) => {
+        const { onlinePlayers, profit } = randomizeGamesData({ ...gameData }, index, vipAccess);
+        // Note: Now randomizeGamesData will get the updated vip status.
+
+        return {
+          ...gameData,
+          onlinePlayers,
+          profit
+        };
+
+      });
+      console.log(newGamesData)
+        ; // Logging the new array, not the old one
+      setGamesData(newGamesData);
+    }
+
+  }, [vipAccess]);
+
 
 
   return (
@@ -185,13 +240,13 @@ function App() {
       <>
 
         <Router>
-          <Nav v33={v33} vipAccess={vipAccess}/>
-          <BottomNav v33={v33} vipAccess={vipAccess}/>
+          <Nav v33={v33} vipAccess={vipAccess} />
+          <BottomNav v33={v33} vipAccess={vipAccess} />
           <ScrollToTop />
           <Routes>
-            <Route path="/" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={false} setAffLink={setAffLink} setV33={setV33}/>} />
-            <Route path="/viplion" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} setVipAccess={setVipAccess}  /> } />
-            <Route path="/v33" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33}/>} />
+            <Route path="/" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={false} setAffLink={setAffLink} setV33={setV33} />} />
+            <Route path="/viplion" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} setVipAccess={setVipAccess} />} />
+            <Route path="/v33" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} />} />
             <Route path="/chat" element={<ChatPage
               game={selectedGame.game}
               analystPfp={selectedGame.analystPfp}
