@@ -143,7 +143,7 @@ export function Notis({ data }) {
             const newBadge = { id: Date.now(), type: randomType, name: randomName, value: randomValue, game: randomGame };
 
             setBadges(oldBadges => {
-                if (oldBadges.length >= 11) {
+                if (oldBadges.length >= 15) {
                     return [...oldBadges.slice(1), newBadge];
                 }
                 return [...oldBadges, newBadge];

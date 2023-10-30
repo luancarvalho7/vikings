@@ -89,9 +89,22 @@ function App() {
 
     const randomizedPlayers = getRandomizedPlayers();
 
-    /* PROFIT NOT 100% */
+    /* LAST DAY PROFIT */
 
+    const lastProfitSeed = `${month.toString()}${(day-1).toString()}${index}`;
+
+    const lastProfitRng = seedrandom(lastProfitSeed);
+    const randomLastProfitFactor = lastProfitRng();
+
+    const deltaLastProfitFactor = 0.1 + (0.4 - 0.1) * lastProfitRng();
+    const deltaLastProfit = gamesData.profit * deltaLastProfitFactor
+
+    const viewLastProfit = gamesData.profit + Math.floor((deltaLastProfitFactor * 2 * randomLastProfitFactor) - deltaLastProfit);
+
+    
     const profitSeed = `${month.toString()}${day.toString()}${index}`;
+
+        /* PROFIT  100% */
 
     const profitRng = seedrandom(profitSeed);
     const randomProfitFactor = profitRng();
@@ -188,21 +201,30 @@ function App() {
 
 
     const currentProfit = calculateCurrentValue(randomizedProfit, null, gamesData.vip)
+    
+    const currentAnalyst = ()=>{
+      if(hours>15 || hours<6){
+        return gamesData.analyst[1]
+      }
+      else{
+        return gamesData.analyst[0]
+      }
+    }
 
-
-    return { onlinePlayers: randomizedPlayers, profit: currentProfit };
+    return { onlinePlayers: randomizedPlayers, profit: currentProfit, analyst:currentAnalyst(),lastDayProfit: viewLastProfit };
   }
 
   useEffect(() => {
 
+    console.log(gamesData)
     if (vipAccess) {
       const newGamesData = vipGamesData.map((gameData, index) => {
         const vip = true; // Setting vip to true
-        const { onlinePlayers, profit } = randomizeGamesData({ ...gameData, vip }, index, vipAccess);
-        // Note: Now randomizeGamesData will get the updated vip status.
+        const { onlinePlayers, profit, analyst } = randomizeGamesData({ ...gameData, vip }, index, vipAccess);
 
         return {
           ...gameData,
+          analyst,
           vip, // Setting vip to true for all items
           onlinePlayers,
           profit
@@ -215,11 +237,13 @@ function App() {
     }
     else {
       const newGamesData = gamesData.map((gameData, index) => {
-        const { onlinePlayers, profit } = randomizeGamesData({ ...gameData }, index, vipAccess);
-        // Note: Now randomizeGamesData will get the updated vip status.
+        const { onlinePlayers, profit, lastDayProfit,analyst } = randomizeGamesData({ ...gameData }, index, vipAccess);
+                // Note: Now randomizeGamesData will get the updated vip status.
 
         return {
           ...gameData,
+          analyst,
+          lastDayProfit,
           onlinePlayers,
           profit
         };
@@ -258,6 +282,7 @@ function App() {
               affLink={affLink}
               v33={v33}
               vipAccess={vipAccess}
+              lastDayProfit={selectedGame.lastDayProfit}
             />} />
           </Routes>
         </Router>

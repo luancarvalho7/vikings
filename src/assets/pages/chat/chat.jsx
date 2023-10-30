@@ -17,7 +17,8 @@ export function ChatPage({
     onlinePlayers = 999,
     affLink = "https://go.aff.bullsbetaffiliate.com/64ep1444?source_id=app",
     v33 = false,
-    vipAccess = false
+    vipAccess = false,
+    lastDayProfit = 0 
 }) {
 
 
@@ -36,16 +37,16 @@ export function ChatPage({
     useEffect(() => {
 
         if (game == null) {
-            if(vipAccess){
+            if (vipAccess) {
                 navigate('/viplion')
             }
-            else if(v33){
+            else if (v33) {
                 navigate('/v33')
             }
-            else{
+            else {
                 navigate('/')
             }
-            
+
         }
     }, [])
 
@@ -67,7 +68,7 @@ export function ChatPage({
 
     const typingSpeed = 1000 / 8.5; // milliseconds per character
 
-    const getCrashSignal = (mode=0) => {
+    const getCrashSignal = (mode = 0) => {
         let results = [];
 
         const maxValues = {
@@ -326,45 +327,53 @@ export function ChatPage({
         let index = 0;
         const types = ['analysis', 'announcing'];
 
-        const changeMessage = (currentIndex) => {
-            setMessage('typing');
+        console.log(onlinePlayers == 0)
 
-            const type = types[currentIndex];
-            const nextMessageData = type === 'announcing' ? generateSignal() : { finalMessage: getRandomMessage(type) };
+        if (onlinePlayers == 0) {
+            setMessage(`Operações encerradas por hoje pessoal! Ate amanhã! <br/>  
+            Hoje deu pra lucrar R$${lastDayProfit < 1000 ? lastDayProfit.toString() : (lastDayProfit / 1000).toLocaleString('en-US', { minimumFractionDigits: 3, maximumFractionDigits: 3 })} 🤑🤑 <br/>
+            Quem quiser continuar operando basta adquirir o VIP`)
+        } else {
+            const changeMessage = (currentIndex) => {
+                setMessage('typing');
 
-            let delay = nextMessageData.finalMessage.length * typingSpeed;
+                const type = types[currentIndex];
+                const nextMessageData = type === 'announcing' ? generateSignal() : { finalMessage: getRandomMessage(type) };
 
-            // Check if delay is greater than 10 seconds
-            if (delay > 10000) {
-                // Randomly choose a new delay between 2 and 10 seconds
-                delay = Math.floor(Math.random() * (10000 - 5000) + 5000);
-            }
+                let delay = nextMessageData.finalMessage.length * typingSpeed;
 
-            console.log(delay);
-
-            timer = setTimeout(() => {
-                setMessage(nextMessageData.finalMessage);
-
-                const nextIndex = (currentIndex + 1) % types.length;
-
-                let nextDelay;
-                if (nextMessageData.timeLimit) {
-                    const timeParts = nextMessageData.timeLimit.split(":");
-                    const timeLimitDate = new Date();
-                    timeLimitDate.setHours(parseInt(timeParts[0]));
-                    timeLimitDate.setMinutes(parseInt(timeParts[1]));
-                    nextDelay = timeLimitDate.getTime() - new Date().getTime();
-                } else if (delay > 5000) {
-                    nextDelay = Math.random() * 1500 + 4000;
-                } else {
-                    nextDelay = delay;
+                // Check if delay is greater than 10 seconds
+                if (delay > 10000) {
+                    // Randomly choose a new delay between 2 and 10 seconds
+                    delay = Math.floor(Math.random() * (10000 - 5000) + 5000);
                 }
 
-                timer = setTimeout(() => changeMessage(nextIndex), nextDelay);
-            }, delay);
-        };
+                console.log(delay);
 
-        timer = setTimeout(() => changeMessage(index), 0);
+                timer = setTimeout(() => {
+                    setMessage(nextMessageData.finalMessage);
+
+                    const nextIndex = (currentIndex + 1) % types.length;
+
+                    let nextDelay;
+                    if (nextMessageData.timeLimit) {
+                        const timeParts = nextMessageData.timeLimit.split(":");
+                        const timeLimitDate = new Date();
+                        timeLimitDate.setHours(parseInt(timeParts[0]));
+                        timeLimitDate.setMinutes(parseInt(timeParts[1]));
+                        nextDelay = timeLimitDate.getTime() - new Date().getTime();
+                    } else if (delay > 5000) {
+                        nextDelay = Math.random() * 1500 + 4000;
+                    } else {
+                        nextDelay = delay;
+                    }
+
+                    timer = setTimeout(() => changeMessage(nextIndex), nextDelay);
+                }, delay);
+            };
+
+            timer = setTimeout(() => changeMessage(index), 0);
+        }
 
         return () => {
             clearTimeout(timer);
@@ -406,8 +415,8 @@ export function ChatPage({
                 onlinePlayers={onlinePlayers}
                 analystPfp={analystPfp}
             />
-            <div id='todayMsgDate'> <p className='greenGradientText'> HOJE</p>  </div>
-            <Message analyst={analyst} analystPfp={analystPfp} message={message} hour={hour} />
+            <div id='todayMsgDate'> <p className='greenGradientText'>{onlinePlayers == 0 ? (hour>21 ? "HOJE" : "ONTEM") : "HOJE"}</p>  </div>
+            <Message analyst={analyst} analystPfp={analystPfp} message={message} hour={onlinePlayers == 0 ? "21:00" : hour} />
             <iframe src={affLink} id='iframeCasino'></iframe>
         </section>
     );
