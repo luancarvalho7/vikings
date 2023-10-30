@@ -118,6 +118,8 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
   }, [location]);
 
   useEffect(() => {
+
+    console.log(category)
     if (location.pathname == '/viplion') {
       setVipAccess(true)
     }
@@ -163,7 +165,7 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
           {<Badge img={playingcards} txt={"Cassino"} extra={1} setCategory={setCategory} />}
 
           {<Badge img={ball} txt={"Esportes"} extra={2} setCategory={setCategory} />}
-         </div>
+        </div>
         <div className="liveGames">
           <div className="sectionTitle">
             <img src={signals} alt="" width={22} height={22} id="signalsIcon" />
@@ -177,10 +179,18 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
             </section> : ''
           }
 
-          <GameCategorySection title={category} gameType={checkedCategory()} data={data} setSGame={setSGame} sort="vip" />
+          {category == null ? "" : <GameCategorySection title={category} gameType={checkedCategory()} data={data} setSGame={setSGame} sort="vip" />}
 
 
         </div>
+
+        <section className="ctaSection borderSpacing">
+        <div className="cta-vip02-stroke" onClick={() => window.open('https://checkout.perfectpay.com.br/pay/PPU38CNC4TL', '_blank')}>
+            <div className="cta-vip02">
+
+            </div>
+          </div>
+        </section>
       </div>
 
 
