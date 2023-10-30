@@ -163,7 +163,7 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
           {<Badge img={playingcards} txt={"Cassino"} extra={1} setCategory={setCategory} />}
 
           {<Badge img={ball} txt={"Esportes"} extra={2} setCategory={setCategory} />}
-        </div>
+         </div>
         <div className="liveGames">
           <div className="sectionTitle">
             <img src={signals} alt="" width={22} height={22} id="signalsIcon" />

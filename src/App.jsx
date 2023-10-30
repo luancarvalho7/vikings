@@ -11,12 +11,12 @@ import './App.css'
 import data from './assets/data/data.json'
 
 
-import { Card } from './assets/components/Card/card.jsx'
 import { ChatPage } from './assets/pages/chat/chat'
 import { Home } from './assets/pages/homepage/home.jsx'
 import ScrollToTop from './assets/utils/scrollToTop.jsx';
 import { Nav } from './assets/components/navbar/nav';
 import { BottomNav } from './assets/components/navbar/bottomnav';
+import { Notis } from './assets/components/notification/notis';
 
 function App() {
 
@@ -238,9 +238,11 @@ function App() {
     <>
 
       <>
-
         <Router>
+
           <Nav v33={v33} vipAccess={vipAccess} />
+          <Notis data={data}/>
+
           <BottomNav v33={v33} vipAccess={vipAccess} />
           <ScrollToTop />
           <Routes>
