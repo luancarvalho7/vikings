@@ -58,7 +58,7 @@ function App() {
       if (gamesData.vip) {
         return true
       } else {
-        if (hours < 21 && hours > 9) {
+        if (hours < 21 && hours > 6) {
           return true
         }
         else {
@@ -238,7 +238,6 @@ function App() {
     else {
       const newGamesData = gamesData.map((gameData, index) => {
         const { onlinePlayers, profit, lastDayProfit,analyst } = randomizeGamesData({ ...gameData }, index, vipAccess);
-                // Note: Now randomizeGamesData will get the updated vip status.
 
         return {
           ...gameData,
