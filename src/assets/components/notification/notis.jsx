@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { NotiBadge } from './NotiBadge';
+import { NotiBadge } from './notiBadge.jsx';
 import './notis.css'
 
 export function Notis({ data }) {

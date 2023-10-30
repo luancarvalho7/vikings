@@ -16,7 +16,7 @@ import { Home } from './assets/pages/homepage/home.jsx'
 import ScrollToTop from './assets/utils/scrollToTop.jsx';
 import { Nav } from './assets/components/navbar/nav';
 import { BottomNav } from './assets/components/navbar/bottomnav';
-import { Notis } from './assets/components/notification/notis';
+import { Notis } from './assets/components/notification/notis.jsx';
 
 function App() {
 
