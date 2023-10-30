@@ -17,6 +17,7 @@ import slots from '../../images/svg/slots.svg'
 import signals from '../../images/svg/signals.svg'
 import { Card } from '../../components/Card/card';
 import { useState, useEffect, useRef } from 'react';
+import { BannerSection } from './bannersSection/bannerSection';
 
 
 
@@ -35,7 +36,7 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
           {title}
         </h1>
         <div className="sc-view">
-          <Swiper slidesPerView={'auto'} centeredSlides={false} spaceBetween={0} className="mySwiper">
+          <Swiper slidesPerView={'auto'} centeredSlides={false} spaceBetween={0} className="gameSwiper">
             {data
               .filter(game => game.type === gameType)
               .sort((a, b) => {
@@ -147,7 +148,7 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
 
   return (
     <section id="home">
-
+      <BannerSection/>
       <div>
         <h1 id="mainHeading" className='borderSpacing'>
           Com qual jogo você <br />
@@ -157,6 +158,7 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
           </span>{" "}
           hoje?
         </h1>
+         
         <div className="gameGrid borderSpacing" >
           {<Badge img={rocket} txt={"Crash"} extra={0} setCategory={setCategory} />}
 
@@ -184,13 +186,13 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
 
         </div>
 
-        <section className="ctaSection borderSpacing">
-        <div className="cta-vip02-stroke" onClick={() => window.open('https://checkout.perfectpay.com.br/pay/PPU38CNC4TL', '_blank')}>
+        {vipAccess ? "" : <section className="ctaSection borderSpacing">
+          <div className="cta-vip02-stroke" onClick={() => window.open('https://checkout.perfectpay.com.br/pay/PPU38CNC4TL', '_blank')}>
             <div className="cta-vip02">
 
             </div>
           </div>
-        </section>
+        </section>}
       </div>
 
 
