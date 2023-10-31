@@ -26,8 +26,8 @@ export function BannerSection() {
                 modules={[Autoplay]}
                 className="bannerSwiper"
             >
-                <SwiperSlide><img src="https://i.postimg.cc/8CfKmRpc/2k.png" alt="" onClick={() => { }} /></SwiperSlide>
-                <SwiperSlide><img src="https://i.postimg.cc/ZnHV5jc7/Community.png" alt="" style={{ cursor: "pointer" }}
+                <SwiperSlide><img src="https://i.postimg.cc/SK2HR0Hn/2k.webp" alt="" onClick={() => { }} /></SwiperSlide>
+                <SwiperSlide><img src="https://i.postimg.cc/VNxpbGcD/Community.webp" alt="" style={{ cursor: "pointer" }}
                     onClick={() => { window.open("https://chat.whatsapp.com/JlCxZ8nndvS5mb2QuTmS5L") }} /></SwiperSlide>
             </Swiper>
         </>
