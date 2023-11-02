@@ -118,7 +118,7 @@ function App() {
 
 
       const now = new Date();
-      const hours = overrideHour !== null ? overrideHour : now.getHours() + now.getMinutes() / 60;
+      const hours = overrideHour !== null ? overrideHour : now.getHours()  + now.getMinutes() / 60;
       const minutes = now.getMinutes();
       const rng = seedrandom(`${now.getDate()}${hours}${minutes}`);
 
@@ -194,7 +194,7 @@ function App() {
         tempValue *= 1 - decreaseFactor;
       }
 
-      tempValue = Math.min(tempValue, maxValue);
+     /*  tempValue = Math.min(tempValue, maxValue); */
 
       return (Math.floor(tempValue));
     };
@@ -211,7 +211,7 @@ function App() {
       }
     }
 
-    return { onlinePlayers: randomizedPlayers, profit: currentProfit, analyst:currentAnalyst(),lastDayProfit: viewLastProfit };
+    return { onlinePlayers: randomizedPlayers, profit: currentProfit, analyst:currentAnalyst(),lastDayProfit: viewLastProfit, currentDayProfit:randomizedProfit };
   }
 
   useEffect(() => {
@@ -231,18 +231,18 @@ function App() {
         };
 
       });
-      console.log(newGamesData)
-        ; // Logging the new array, not the old one
+        ; 
       setGamesData(newGamesData);
     }
     else {
       const newGamesData = gamesData.map((gameData, index) => {
-        const { onlinePlayers, profit, lastDayProfit,analyst } = randomizeGamesData({ ...gameData }, index, vipAccess);
+        const { onlinePlayers, profit, lastDayProfit, currentDayProfit, analyst } = randomizeGamesData({ ...gameData }, index, vipAccess);
 
         return {
           ...gameData,
           analyst,
           lastDayProfit,
+          currentDayProfit,
           onlinePlayers,
           profit
         };
@@ -271,7 +271,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={false} setAffLink={setAffLink} setV33={setV33} />} />
             <Route path="/viplion" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} setVipAccess={setVipAccess} />} />
-            <Route path="/v33" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} />} />
+            <Route path="/v33" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} setVipAccess={setVipAccess} />} />
             <Route path="/chat" element={<ChatPage
               game={selectedGame.game}
               analystPfp={selectedGame.analystPfp}
@@ -282,6 +282,7 @@ function App() {
               v33={v33}
               vipAccess={vipAccess}
               lastDayProfit={selectedGame.lastDayProfit}
+              currentDayProfit={selectedGame.currentDayProfit}
             />} />
           </Routes>
         </Router>

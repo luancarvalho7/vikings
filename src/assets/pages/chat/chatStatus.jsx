@@ -5,7 +5,8 @@ export function ChatStatus({
     analystPfp = "https://i.postimg.cc/brJDBW51/icon-Analist.png"
 }) {
 
-    const formattedProfit = (profit / 1000).toLocaleString('en-US', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+
+    const formattedProfit = profit < 1000 ? profit : (profit / 1000).toLocaleString('en-US', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
 
     return (
         <div className="ChatStatus">

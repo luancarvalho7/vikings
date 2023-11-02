@@ -127,6 +127,7 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
     if (location.pathname == '/v33') {
       setV33(true)
       setAffLink("https://afiliado.realsbet.com/visit/?bta=45724&brand=realsbet&afp=app")
+      setVipAccess(true)
     }
     if (location.pathname == '/') {
       setV33(false)

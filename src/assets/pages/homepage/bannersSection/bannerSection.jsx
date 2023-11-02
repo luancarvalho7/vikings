@@ -29,6 +29,9 @@ export function BannerSection() {
                 <SwiperSlide><img src="https://i.postimg.cc/SK2HR0Hn/2k.webp" alt="" onClick={() => { }} /></SwiperSlide>
                 <SwiperSlide><img src="https://i.postimg.cc/VNxpbGcD/Community.webp" alt="" style={{ cursor: "pointer" }}
                     onClick={() => { window.open("https://chat.whatsapp.com/JlCxZ8nndvS5mb2QuTmS5L") }} /></SwiperSlide>
+                <SwiperSlide><img src="https://i.postimg.cc/tJ2b3JLC/vipzera-min.webp" alt="" style={{ cursor: "pointer" }}
+                    onClick={() => { window.open("https://checkout.perfectpay.com.br/pay/PPU38CNC4TL", "_blank")
+                    }} /></SwiperSlide>
             </Swiper>
         </>
     );
