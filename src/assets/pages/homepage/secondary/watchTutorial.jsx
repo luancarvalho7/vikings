@@ -40,7 +40,7 @@ export function WatchTutorial({ aula, index, changeVideoByButtons, aulasLenght }
                 </button>
 
                 <button
-                    className={currentIndex === aulasLenght - 1 ? "wvBtn wvDisabled" : "wvBtn"}
+                    className={currentIndex === aulasLenght - 1 ? "wvBtn wvDisabled" : "wvBtn  bg-gradient"}
                     onClick={handleNextClick}>
                     PRÓXIMA AULA
                 </button>
