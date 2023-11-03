@@ -132,22 +132,22 @@ export function ChatPage({
         const normal = random();
         const turbo = random();
 
-        return `entrem <strong>${normal}x</strong> normal e <strong>${turbo}x</strong> turbo alternado`;
+        return `entrem <strong class="greenGradientText">${normal}x normal</strong>  e <strong class="greenGradientText">${turbo}x turbo</strong>  alternado`;
     }
     const getRouletteSignal = () => {
         const signals = [
-            "Entrem no vermelho",
-            "Entrem no preto",
-            "Joguem nos pares",
-            "Joguem nos ímpares",
-            "Entrem no 1 a 18",
-            "Entrem no 19 a 36",
-            "Entrem na 1ª e 2ª coluna",
-            "Entrem na 1ª e 3ª coluna",
-            "Entrem na 2ª e 3ª coluna",
-            "Entrem na 1ª e 2ª dúzia",
-            "Entrem na 1ª e 3ª dúzia",
-            "Entrem na 2ª e 3ª dúzia",
+            `Entrem no <strong class="greenGradientText"> vermelho </strong>`,
+            `Entrem no <strong class="greenGradientText"> preto </strong>`,
+            `Joguem nos <strong class="greenGradientText"> pares </strong>`,
+            `Joguem nos <strong class="greenGradientText"> ímpares </strong>`,
+            `Entrem no <strong class="greenGradientText"> 1 a 18 </strong>`,
+            `Entrem no <strong class="greenGradientText"> 19 a 36 </strong>`,
+            `Entrem na <strong class="greenGradientText"> 1ª </strong> e <strong class="greenGradientText"> 2ª </strong> coluna`,
+            `Entrem na <strong class="greenGradientText"> 1ª </strong> e <strong class="greenGradientText"> 3ª </strong> coluna`,
+            `Entrem na <strong class="greenGradientText"> 2ª </strong> e <strong class="greenGradientText"> 3ª </strong> coluna`,
+            `Entrem na <strong class="greenGradientText"> 1ª </strong> e <strong class="greenGradientText"> 2ª </strong> dúzia`,
+            `Entrem na <strong class="greenGradientText"> 1ª </strong> e <strong class="greenGradientText"> 3ª </strong> dúzia`,
+            `Entrem na <strong class="greenGradientText"> 2ª </strong> e <strong class="greenGradientText"> 3ª </strong> dúzia`,
         ];
 
         const complements = ["1 tentativa", "2 tentativas", "3 tentativas"];

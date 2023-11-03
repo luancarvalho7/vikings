@@ -17,6 +17,9 @@ import ScrollToTop from './assets/utils/scrollToTop.jsx';
 import { Nav } from './assets/components/navbar/nav';
 import { BottomNav } from './assets/components/navbar/bottomnav';
 import { Notis } from './assets/components/notification/notis.jsx';
+import { Bonus } from './assets/pages/homepage/secondary/bonus.jsx';
+import { Lives } from './assets/pages/homepage/secondary/lives.jsx';
+import { Tutorial } from './assets/pages/homepage/secondary/tutorial.jsx';
 
 function App() {
 
@@ -284,6 +287,12 @@ function App() {
               lastDayProfit={selectedGame.lastDayProfit}
               currentDayProfit={selectedGame.currentDayProfit}
             />} />
+          <Route path='/bonus' element={<Bonus/>}/>
+          <Route path='/lives' element={<Lives/>}/>
+          <Route path='/tutorial' element={<Tutorial/>}/>
+
+          
+
           </Routes>
         </Router>
       </>

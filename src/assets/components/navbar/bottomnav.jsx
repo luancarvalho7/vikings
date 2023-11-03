@@ -74,29 +74,31 @@ export function BottomNav({ v33, vipAccess = false }) {
             <nav className="bottomNav">
                 <div className="bn-content">
                     <button
-                        onClick={() => switchPage(v33 ? '/v33' : (vipAccess ? '/viplion' :'/'))}
+                        onClick={() => switchPage(v33 ? '/v33' : (vipAccess ? '/viplion' : '/'))}
                         className={`bn-btn ${selected === '/' || selected === '/v33' || selected === '/viplion' ? 'bn-selected' : ''}`}
                     >
                         <Game />
                         <h3>Salas</h3>
                     </button>
                     <button
-
-                        className={`bn-btn ${selected === 'Bônus' ? 'bn-selected' : ''}`}
+                        onClick={() => switchPage('/bonus')}
+                        className={`bn-btn ${selected === '/bonus' ? 'bn-selected' : ''}`}
                     >
                         <ResgateBonus />
                         <h3>Bônus</h3>
                     </button>
                     <button
+                        onClick={() => switchPage('/lives')}
 
-                        className={`bn-btn ${selected === 'Lives' ? 'bn-selected' : ''}`}
+                        className={`bn-btn ${selected === '/lives' ? 'bn-selected' : ''}`}
                     >
                         <LiveOperacoes />
                         <h3>Lives</h3>
                     </button>
                     <button
+                        onClick={() => switchPage('/tutorial')}
 
-                        className={`bn-btn ${selected === 'Tutorial' ? 'bn-selected' : ''}`}
+                        className={`bn-btn ${selected === '/tutorial' ? 'bn-selected' : ''}`}
                     >
                         <AprendaJogar />
                         <h3>Tutorial</h3>

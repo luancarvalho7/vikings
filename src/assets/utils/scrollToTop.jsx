@@ -11,7 +11,7 @@ const ScrollToTop = () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
             console.log('go to top')
 
-        }, 2000)
+        }, 0)
 
 
     }, [pathname]);
