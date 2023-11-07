@@ -23,6 +23,7 @@ import { Tutorial } from './assets/pages/homepage/secondary/tutorial.jsx';
 
 function App() {
 
+  const [inicio, setInicio] = useState(false)
 
   const [vipGamesData, setVipGamesData] = useState(data)
   const [gamesData, setGamesData] = useState(data)
@@ -266,15 +267,18 @@ function App() {
       <>
         <Router>
 
-          <Nav v33={v33} vipAccess={vipAccess} />
+          <Nav v33={v33} inicio={inicio} vipAccess={vipAccess} />
           <Notis data={data}/>
 
-          <BottomNav v33={v33} vipAccess={vipAccess} />
+          <BottomNav v33={v33} inicio={inicio} vipAccess={vipAccess} />
           <ScrollToTop />
           <Routes>
-            <Route path="/" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={false} setAffLink={setAffLink} setV33={setV33} />} />
-            <Route path="/viplion" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} setVipAccess={setVipAccess} />} />
-            <Route path="/v33" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} setVipAccess={setVipAccess} />} />
+            <Route path="/" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={false} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} />} />
+            <Route path="/inicio" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={false} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} />} />
+
+            <Route path="/viplion" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} setVipAccess={setVipAccess} />} />
+            <Route path="/vipsb" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} setVipAccess={setVipAccess} />} />
+            <Route path="/v33" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} setVipAccess={setVipAccess} />} />
             <Route path="/chat" element={<ChatPage
               game={selectedGame.game}
               analystPfp={selectedGame.analystPfp}
@@ -283,11 +287,12 @@ function App() {
               onlinePlayers={selectedGame.onlinePlayers}
               affLink={affLink}
               v33={v33}
-              vipAccess={vipAccess}
+              inicio={inicio}
+              vipAccess={vipAccess} 
               lastDayProfit={selectedGame.lastDayProfit}
               currentDayProfit={selectedGame.currentDayProfit}
             />} />
-          <Route path='/bonus' element={<Bonus/>}/>
+          <Route path='/bonus' element={<Bonus inicio={inicio}/>}/>
           <Route path='/lives' element={<Lives/>}/>
           <Route path='/tutorial' element={<Tutorial/>}/>
 

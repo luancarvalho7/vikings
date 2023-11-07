@@ -55,7 +55,7 @@ const ResgateBonus = () => {
 }
 
 
-export function BottomNav({ v33, vipAccess = false }) {
+export function BottomNav({ v33, vipAccess = false, inicio}) {
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -69,13 +69,17 @@ export function BottomNav({ v33, vipAccess = false }) {
 
     }
 
+    useEffect(()=>{
+        console.log(vipAccess)
+    })
+
     return (
         <>
             <nav className="bottomNav">
                 <div className="bn-content">
                     <button
-                        onClick={() => switchPage(v33 ? '/v33' : (vipAccess ? '/viplion' : '/'))}
-                        className={`bn-btn ${selected === '/' || selected === '/v33' || selected === '/viplion' ? 'bn-selected' : ''}`}
+                        onClick={() => switchPage(v33 ? '/v33' : (vipAccess ? '/viplion' : (inicio ? '/inicio' : '/')))}  
+                        className={`bn-btn ${selected === '/' || selected === '/v33' || selected === '/inicio'  || selected === '/viplion' || selected === '/vipsb' ? 'bn-selected' : ''}`}
                     >
                         <Game />
                         <h3>Salas</h3>

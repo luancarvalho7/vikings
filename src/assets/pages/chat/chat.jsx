@@ -22,7 +22,8 @@ export function ChatPage({
     v33 = false,
     vipAccess = false,
     lastDayProfit = 0,
-    currentDayProfit = 0
+    currentDayProfit = 0,
+    inicio = false
 }) {
 
     const [msgHour, setMsgHour] = useState('')
@@ -34,7 +35,7 @@ export function ChatPage({
 
 
     useEffect(() => {
-        if (location.pathname === '/' || location.pathname === '/v33' || location.pathname === '/viplion' && hasNavigatedAway.current) {
+        if (location.pathname === '/' || location.pathname === '/v33' ||  location.pathname === '/inicio' ||  location.pathname === '/viplion' && hasNavigatedAway.current) {
             hasNavigatedAway.current = false;
         }
 
@@ -42,13 +43,18 @@ export function ChatPage({
 
     useEffect(() => {
 
-        console.log()
         if (game == null) {
-            if (vipAccess) {
+            if (vipAccess && inicio==false) {
                 navigate('/viplion')
             }
             else if (v33) {
                 navigate('/v33')
+            }
+            else if (inicio && vipAccess){
+                navigate('/vipsb')
+            }
+            else if (inicio && vipAccess==false){
+                navigate('/inicio')
             }
             else {
                 navigate('/')
@@ -454,7 +460,6 @@ export function ChatPage({
     };
 
     useEffect(() => {
-        console.log('TypeIndex' + ' ' + types[typeIndex])
 
         if (onlinePlayers == 0) {
             setMessage(`Operações encerradas por hoje pessoal! Ate amanhã! <br/>  
@@ -484,7 +489,6 @@ export function ChatPage({
     }, [typeIndex]);
 
     useEffect(() => {
-        console.log( calculateLoopStartTime())
         setSeed(getSeedForCurrentLoop());
         const interval = setInterval(() => {
             checkTimeAndUpdateMessage();

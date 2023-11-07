@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Scrollbar } from '../../../components/scrollbar/scrollbar'
 import './bonus.css'
-export function Bonus() {
+export function Bonus({ inicio }) {
 
 
     const [iFrameOn, setiFrameOn] = useState(false)
@@ -14,9 +14,10 @@ export function Bonus() {
             <div className="imgheaderBlock"></div>
 
             <div className="bonusContent borderSpacing">
-                <img src="https://i.postimg.cc/3RW6RXxX/bullsbet.webp" className="bonusHouse"></img>
+                <img src={inicio ? "https://i.postimg.cc/3NF8rvqm/eskybet-WEBP.webp"
+                    : "https://i.postimg.cc/tJjRH5B9/cassinopix.webp"} className="bonusHouse"></img>
                 <div className="bh-txt">
-                    <h3 className='housetitle txt-gradient'>BullsBet</h3>
+                    <h3 className='housetitle txt-gradient'>{inicio ? "Esky Bet" : "CassinoPix"}</h3>
                     <h2>Única plataforma onde os
                         analistas trabalham e o BUG Funciona!</h2>
                 </div>
@@ -43,8 +44,8 @@ export function Bonus() {
                 </div>
             </div>
 
-            <iframe src="https://go.aff.bullsbetaffiliate.com/64ep1444?source_id=app" id='bonusiFrame' className={iFrameOn ? "" : "if-disabled"}></iframe>
+            <iframe src={inicio ? "https://eskybet.com/cadastro?afiliado=00" : "https://go.aff.7k-partners.com/q1jq0ejc?source_id=app"} id='bonusiFrame' className={iFrameOn ? "" : "if-disabled"}></iframe>
 
-        </section>
+        </section >
     )
 }

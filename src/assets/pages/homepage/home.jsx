@@ -22,8 +22,10 @@ import { BannerSection } from './bannersSection/bannerSection';
 
 
 
-export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLink, setV33, setVipAccess }) {
+export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLink, setV33, setInicio, setVipAccess }) {
 
+
+  const [currentHouse, setCurrentHouse] = useState('cassinopix')
   const [category, setCategory] = useState(null)
   const location = useLocation();
   const navigate = useNavigate();
@@ -92,6 +94,12 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
 
   useEffect(() => {
 
+    if (currentHouse == "cassinopix") {
+      setAffLink(selectedGame.ifrCassinoPix)
+    } else if (currentHouse == "skybet") {
+      setAffLink(selectedGame.ifrSkyBet)
+    }
+
     if (selectedGame.game != null) {
       navigate('/chat');
       hasNavigatedAway.current = true;
@@ -99,7 +107,7 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
   }, [selectedGame])
 
   useEffect(() => {
-    if (location.pathname === '/' || location.pathname === '/v33' || location.pathname === '/viplion' && hasNavigatedAway.current) {
+    if (location.pathname === '/' || location.pathname === '/v33' || location.pathname === '/inicio' ||  location.pathname === '/viplion'  ||  location.pathname === '/vipsb' && hasNavigatedAway.current) {
       setSGame(
         {
           "game": null,
@@ -124,15 +132,40 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
     if (location.pathname == '/viplion') {
       setVipAccess(true)
     }
+    if (location.pathname == '/vipsb') {
+      setV33(false)
+      setInicio(true)
+      setVipAccess
+      setAffLink("https://eskybet.com/cadastro?afiliado=00")
+      setCurrentHouse('skybet')
+    }
     if (location.pathname == '/v33') {
       setV33(true)
       setAffLink("https://afiliado.realsbet.com/visit/?bta=45724&brand=realsbet&afp=app")
       setVipAccess(true)
     }
     if (location.pathname == '/') {
+
+      //CassinoPIX
       setV33(false)
-      setAffLink("https://go.aff.bullsbetaffiliate.com/64ep1444?source_id=app")
+      setInicio(false)
+      if (currentHouse == "cassinopix") {
+        setAffLink("https://go.aff.7k-partners.com/q1jq0ejc?source_id=app")
+      }
+      else if (currentHouse == "skybet") {
+        setAffLink("https://eskybet.com/cadastro?afiliado=00")
+      }
+
     }
+    if (location.pathname == '/inicio') {
+
+      //CassinoPIX
+      setV33(false)
+      setInicio(true)
+      setAffLink("https://eskybet.com/cadastro?afiliado=00")
+      setCurrentHouse('skybet')
+    }
+
   }, [])
 
 
@@ -149,7 +182,7 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
 
   return (
     <section id="home">
-      <BannerSection/>
+      <BannerSection />
       <div>
         <h1 id="mainHeading" className='borderSpacing'>
           Com qual jogo você <br />
@@ -159,7 +192,7 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
           </span>{" "}
           hoje?
         </h1>
-         
+
         <div className="gameGrid borderSpacing" >
           {<Badge img={rocket} txt={"Crash"} extra={0} setCategory={setCategory} />}
 

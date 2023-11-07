@@ -4,16 +4,21 @@ import logo from '../../images/logo.png'
 import { useNavigate } from 'react-router-dom'
 
 
-export function Nav({ v33, vipAccess = false }) {
+export function Nav({ v33, vipAccess = false, inicio }) {
 
     const navigate = useNavigate()
     function navigateHome() {
         if (v33) {
             navigate('/v33')
         }
-        else if(vipAccess){
+        else if(vipAccess && inicio==false){
             navigate('/viplion')
-
+        }
+        else if(vipAccess && inicio){
+            navigate('/vipsb')
+        }
+        else if(inicio && vipAccess==false){
+            navigate('/inicio')
         }
         else {
             navigate('/')
