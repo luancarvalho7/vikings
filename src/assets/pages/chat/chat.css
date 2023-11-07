@@ -1,15 +1,18 @@
-#chatPage *{
+#chatPage * {
     box-sizing: border-box;
 
 
 }
-#chatPage{
+
+#chatPage {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     box-sizing: border-box;
 }
+
+
 
 .ChatStatus * {
     margin: 0px;
@@ -20,6 +23,31 @@
     gap: 12px;
     align-items: center;
 }
+
+/* Profit */
+.chatProfit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.chatProfit h1 {
+    background: var(--Gradient, linear-gradient(87deg, #24FF00 5.19%, #7BFFB0 91.04%));
+    font-size: 14px;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.chatProfit p {
+    font-size: 10px;
+    text-align: center;
+    width: fit-content;
+    color: #C7C7C7;
+    font-weight: 400;
+}
+
 
 .ChatStatus {
     width: 100%;
@@ -33,7 +61,7 @@
 }
 
 
-#todayMsgDate{
+#todayMsgDate {
     margin: 10px 0px;
     align-self: center;
     width: fit-content;
@@ -43,11 +71,12 @@
 }
 
 
-#todayMsgDate p{
+#todayMsgDate p {
     font-size: 12px;
     margin: 0px;
 
 }
+
 /* Message */
 
 #message * {
@@ -89,12 +118,13 @@
     gap: 5px;
 }
 
-.greenGradientText{
+.greenGradientText {
     background: var(--Gradient, linear-gradient(87deg, #24FF00 5.19%, #7BFFB0 91.04%));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 #m-userinfo h1 {
     font-size: 16px;
 }
@@ -106,11 +136,12 @@
     font-weight: 400;
 }
 
-#m-txtcontent{
+#m-txtcontent {
     font-size: 14px;
     color: white;
 }
-#m-clock{
+
+#m-clock {
 
     position: absolute;
     bottom: 10px;
@@ -125,35 +156,37 @@
 
 .typing-container {
     animation: fadeBlink 3s infinite;
-  }
-  
-  @keyframes fadeBlink {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.5;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+}
 
-  .fade-pop {
+@keyframes fadeBlink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-pop {
     opacity: 0;
     transform: scale(0.8);
     transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-  
-  .fade-pop.active {
+}
+
+.fade-pop.active {
     opacity: 1;
     transform: scale(1);
-  }
+}
 
 /* IFRAME */
 
 
-#iframeCasino{
+#iframeCasino {
     margin-top: 18px;
     width: 100%;
     height: 700px;
@@ -172,4 +205,21 @@
     z-index: 9;
     pointer-events: none;
 
-  }
+}
+
+@media(max-width:400px) {
+
+    
+    .ChatStatus {
+        border-radius: 8%;
+        flex-direction: column;
+        display:flex
+    }
+
+    .cr-left{
+        margin-bottom: 6px;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+}

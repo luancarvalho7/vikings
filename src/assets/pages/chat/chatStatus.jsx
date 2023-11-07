@@ -22,7 +22,7 @@ export function ChatStatus({
                 </div>
             </div>
 
-            <div className="cr-profit">
+            <div className="chatProfit">
                 <h1>R$ {formattedProfit}</h1>
                 <p>Lucro Hoje</p>
             </div>

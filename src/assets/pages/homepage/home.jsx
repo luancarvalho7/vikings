@@ -135,7 +135,7 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
     if (location.pathname == '/vipsb') {
       setV33(false)
       setInicio(true)
-      setVipAccess
+      setVipAccess(true)
       setAffLink("https://eskybet.com/cadastro?afiliado=00")
       setCurrentHouse('skybet')
     }
