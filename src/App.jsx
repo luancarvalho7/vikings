@@ -20,6 +20,7 @@ import { Notis } from './assets/components/notification/notis.jsx';
 import { Bonus } from './assets/pages/homepage/secondary/bonus.jsx';
 import { Lives } from './assets/pages/homepage/secondary/lives.jsx';
 import { Tutorial } from './assets/pages/homepage/secondary/tutorial.jsx';
+import { SwiperNotis } from './assets/components/notification/swipernotis.jsx';
 
 function App() {
 
@@ -220,8 +221,8 @@ function App() {
 
   useEffect(() => {
 
-    console.log(gamesData)
-    if (vipAccess) {
+/*     console.log(gamesData)
+ */    if (vipAccess) {
       const newGamesData = vipGamesData.map((gameData, index) => {
         const vip = true; // Setting vip to true
         const { onlinePlayers, profit, analyst } = randomizeGamesData({ ...gameData, vip }, index, vipAccess);
@@ -252,8 +253,8 @@ function App() {
         };
 
       });
-      console.log(newGamesData)
-        ; // Logging the new array, not the old one
+/*       console.log(newGamesData)
+ */        ; // Logging the new array, not the old one
       setGamesData(newGamesData);
     }
 
@@ -268,7 +269,8 @@ function App() {
         <Router>
 
           <Nav v33={v33} inicio={inicio} vipAccess={vipAccess} />
-          <Notis data={data}/>
+{/*           <Notis data={data}/>
+ */}          <SwiperNotis data={data}/>
 
           <BottomNav v33={v33} inicio={inicio} vipAccess={vipAccess} />
           <ScrollToTop />

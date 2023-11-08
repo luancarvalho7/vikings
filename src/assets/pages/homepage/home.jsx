@@ -128,8 +128,8 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
 
   useEffect(() => {
 
-    console.log(category)
-    if (location.pathname == '/viplion') {
+/*     console.log(category)
+ */    if (location.pathname == '/viplion') {
       setVipAccess(true)
     }
     if (location.pathname == '/vipsb') {

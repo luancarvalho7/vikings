@@ -34,8 +34,6 @@ export function Notis({ data }) {
         if (count > 0) {
             let randomType;
             const giftChance = Math.random(); // generates a random number between 0 and 1
-
-            // Setting the odds for 'gift' to be 1/20
             if (giftChance <= 1 / 20) {
                 randomType = 'gift';
             } else {

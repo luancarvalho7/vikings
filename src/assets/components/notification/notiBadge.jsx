@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import React from "react"
 
 const PixIcon = () => {
@@ -24,15 +24,26 @@ const GiftIcon = () => {
 }
 
 
-export const NotiBadge = React.memo(({ type = "gift", name = "Gilmar", value = "1.230", game = "Fortune Ox" }) => {
+export const NotiBadge = React.memo(({ type = "gift", name = "Gilmar", value = "1.230", game = "Fortune Ox", ...otherProps } ) => {
 
     const [run, setRun] = useState(false)
-    const color = () => { if (type == "gift") { return "yellow" } if (type == "pix") { return "blue" } }
+    const color = (xtype) => { if (xtype == "gift") { return "yellow" } if (xtype == "pix") { return "blue" } }
+
+    const [currentColor, setCurrentcolor] = useState(color())
+
+
+    const [bcCurrent, setBcCurrent] = useState(otherProps.items[otherProps.index])
+    useEffect(()=>{
+        
+
+        setBcCurrent(otherProps.items[otherProps.index])
+        setCurrentcolor(color(bcCurrent.type))
+    }, [otherProps])
 
     setTimeout(() => setRun(true), 20000)
     return (
-        <div className={run ? `nRun notiBadge n-${color()}-stroke` : `notiBadge n-${color()}-stroke`}>
-            {type == "gift" ? <GiftIcon /> : <PixIcon />} <h1>{name} <span className='n-regular'>ganhou</span> <span className={`n-${color()}`}>R${value}</span> <span className='n-regular'>{type == "gift" ? "no" : "de"}</span>  <span className={`n-${color()}`}>{type == "gift" ? "Sorteio" : `${game}`}</span> </h1>
+        <div className={run ? `nRun notiBadge n-${currentColor}-stroke` : `notiBadge n-${currentColor}-stroke`}>
+            {bcCurrent.type == "gift" ? <GiftIcon /> : <PixIcon />} <h1>{bcCurrent.name} <span className='n-regular'>ganhou</span> <span className={`n-${currentColor}`}>R${type=="gift" ? Math.floor(bcCurrent.value*20) : Math.floor(bcCurrent.value)}</span> <span className='n-regular'>{bcCurrent.type == "gift" ? "no" : "de"}</span>  <span className={`n-${color()}`}>{type == "gift" ? "Sorteio" : `${game}`}</span> </h1>
         </div>
     )
 })
