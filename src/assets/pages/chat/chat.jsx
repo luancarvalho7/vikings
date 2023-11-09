@@ -23,7 +23,8 @@ export function ChatPage({
     vipAccess = false,
     lastDayProfit = 0,
     currentDayProfit = 0,
-    inicio = false
+    inicio = false,
+    home = false
 }) {
 
     const [msgHour, setMsgHour] = useState('')
@@ -35,7 +36,7 @@ export function ChatPage({
 
 
     useEffect(() => {
-        if (location.pathname === '/' || location.pathname === '/v33' ||  location.pathname === '/inicio' ||  location.pathname === '/viplion' && hasNavigatedAway.current) {
+        if (location.pathname === '/' || location.pathname === '/v33' ||  location.pathname === '/inicio' ||  location.pathname === '/home' ||  location.pathname === '/modevip' ||  location.pathname === '/viplion' && hasNavigatedAway.current) {
             hasNavigatedAway.current = false;
         }
 
@@ -44,7 +45,9 @@ export function ChatPage({
     useEffect(() => {
 
         if (game == null) {
-            if (vipAccess && inicio==false) {
+
+            console.log(`xxxxxxx ${home} , ${vipAccess} `)
+            if (vipAccess && inicio==false && home==false) {
                 navigate('/viplion')
             }
             else if (v33) {
@@ -53,8 +56,15 @@ export function ChatPage({
             else if (inicio && vipAccess){
                 navigate('/vipsb')
             }
+            else if (home && vipAccess){
+                console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+                navigate('/modevip')
+            }
             else if (inicio && vipAccess==false){
                 navigate('/inicio')
+            }
+            else if (home && vipAccess==false){
+                navigate('/home')
             }
             else {
                 navigate('/')

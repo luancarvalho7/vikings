@@ -141,7 +141,6 @@ export function SwiperNotis({ data }) {
   let uEf = 0
   useEffect(() => {
 
-    console.log(mgames())
     uEf++
 
     if (uEf > 1) {
@@ -181,7 +180,6 @@ export function SwiperNotis({ data }) {
         })
 
         setInterval(() => {
-          console.log('SecondHalf')
           setItems(prevItems => {
             const newItems = [...prevItems];
             for (let i = 5; i <= 9; i++) {
@@ -196,7 +194,6 @@ export function SwiperNotis({ data }) {
 
   }, []);
 
-  useEffect(() => { console.log(items), [items] })
 
 
   useEffect(() => {
@@ -206,11 +203,9 @@ export function SwiperNotis({ data }) {
 
       const checkSlideNext = () => {
         if (swiper.slides[7]?.classList.contains('swiper-slide-next')) {
-          console.log('Slide 7 is next');
 
         }
         if (swiper.slides[3]?.classList.contains('swiper-slide-next')) {
-          console.log('Slide 3 is next');
           /*  */
         }
       };
