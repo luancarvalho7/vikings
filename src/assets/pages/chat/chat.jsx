@@ -57,7 +57,6 @@ export function ChatPage({
                 navigate('/vipsb')
             }
             else if (home && vipAccess){
-                console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
                 navigate('/modevip')
             }
             else if (inicio && vipAccess==false){

@@ -47,7 +47,7 @@ export function Nav({ v33, vipAccess = false, inicio, home}) {
                 onClick={navigateHome}
             />
         </div>{
-            vipAccess ? <button className="vipButton bg-gradient">  Membro VIP  </button> : <a href="https://checkout.perfectpay.com.br/pay/PPU38CNC4TL" target="_blank" rel="noopener noreferrer">
+            vipAccess ? <button className="vipButton bg-gradient">  Membro VIP  </button> : <a href="https://www.instagram.com/luan.oak/" target="_blank" rel="noopener noreferrer">
                 <button className="vipButton bg-gradient">  Acesso VIP    </button>
             </a>
 

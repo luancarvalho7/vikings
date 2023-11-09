@@ -20,7 +20,7 @@
 
     display: flex;
     justify-content: space-evenly;
-    border-top: solid 1px green;
+    border-top: solid 1px #00d1ff;
     border-radius: 9px 9px 0px 0px;
     width: 100%;
     padding: 10px 15px;
@@ -44,11 +44,11 @@
 }
 
 .bn-selected h3 {
-    color: #44FF55;
+    color: #00d1ff;
 }
 
 .bn-selected svg * {
-    stroke: #44FF55;
+    stroke: #00d1ff;
 }
 
 .bn-btn a {

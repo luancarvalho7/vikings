@@ -26,11 +26,11 @@ export function BannerSection() {
                 modules={[Autoplay]}
                 className="bannerSwiper"
             >
-                <SwiperSlide><img src="https://i.postimg.cc/SK2HR0Hn/2k.webp" alt="" onClick={() => { }} /></SwiperSlide>
-                <SwiperSlide><img src="https://i.postimg.cc/VNxpbGcD/Community.webp" alt="" style={{ cursor: "pointer" }}
-                    onClick={() => { window.open("https://chat.whatsapp.com/JlCxZ8nndvS5mb2QuTmS5L") }} /></SwiperSlide>
-                <SwiperSlide><img src="https://i.postimg.cc/tJ2b3JLC/vipzera-min.webp" alt="" style={{ cursor: "pointer" }}
-                    onClick={() => { window.open("https://checkout.perfectpay.com.br/pay/PPU38CNC4TL", "_blank")
+                <SwiperSlide><img src="https://i.postimg.cc/1zRXXtTb/demo-ban01.png" alt="" onClick={() => { }} /></SwiperSlide>
+                <SwiperSlide><img src="https://i.postimg.cc/4dm3v0X5/demo-ban02.png" alt="" style={{ cursor: "pointer" }}
+                    onClick={() => { window.open("https://www.instagram.com/vinicim_bf/") }} /></SwiperSlide>
+                <SwiperSlide><img src="https://i.postimg.cc/ZR25wLRh/demo-ban-VIP.png" alt="" style={{ cursor: "pointer" }}
+                    onClick={() => { window.open("https://www.instagram.com/vinicim_bf/", "_blank")
                     }} /></SwiperSlide>
             </Swiper>
         </>

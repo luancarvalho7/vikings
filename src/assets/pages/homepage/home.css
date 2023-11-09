@@ -1,7 +1,8 @@
-#home{
+#home {
 
   margin-bottom: 120px;
 }
+
 #mainHeading {
   margin-top: 1.25rem;
   text-align: center;
@@ -37,7 +38,7 @@
   font-size: 18px;
 
 
-  background: linear-gradient(87deg, #24FF00 5.19%, #7BFFB0 91.04%);
+  background: linear-gradient(87deg, #0085FF 5.19%, #62E3FF 91.04%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

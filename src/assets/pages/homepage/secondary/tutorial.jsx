@@ -40,7 +40,7 @@ export function Tutorial() {
             <div className="tutorialContent">
                 <div className="videosCaroussel">
                     <div className="vc-title borderSpacing">
-                        <h2 >Guia do Leão</h2>
+                        <h2 >Tutorial</h2>
                         <h3>Comece por aqui</h3>
                     </div>
                     <div className="vc-track">
