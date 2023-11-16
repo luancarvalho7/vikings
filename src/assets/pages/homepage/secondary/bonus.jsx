@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Scrollbar } from '../../../components/scrollbar/scrollbar'
 import './bonus.css'
-export function Bonus({ inicio, home }) {
+export function Bonus({ inicio, home, currentHouse }) {
 
 
     const [iFrameOn, setiFrameOn] = useState(false)
@@ -14,10 +14,10 @@ export function Bonus({ inicio, home }) {
             <div className="imgheaderBlock"></div>
 
             <div className="bonusContent borderSpacing">
-                <img src={inicio ? "https://i.postimg.cc/3NF8rvqm/eskybet-WEBP.webp"
-                    : (home ? "https://i.postimg.cc/3RW6RXxX/bullsbet.webp" : "https://i.postimg.cc/tJjRH5B9/cassinopix.webp")} className="bonusHouse"></img>
+                <img src={inicio ? "https://i.postimg.cc/G2TnG2cY/apostaganha.webp"
+                    : (currentHouse=="netbet" ? "https://i.postimg.cc/ZqLfWhtm/netbet.webp" : "https://i.postimg.cc/3RW6RXxX/bullsbet.webp")} className="bonusHouse"></img>
                 <div className="bh-txt">
-                    <h3 className='housetitle txt-gradient'>{inicio ? "Esky Bet" : (home ? "BullsBet" :"CassinoPix")}</h3>
+                    <h3 className='housetitle txt-gradient'>{inicio ? "Aposta Ganha" : (currentHouse=="netbet" ? "NetBet" :"BullsBet")}</h3>
                     <h2>Única plataforma onde os
                         analistas trabalham e o BUG Funciona!</h2>
                 </div>
@@ -44,7 +44,7 @@ export function Bonus({ inicio, home }) {
                 </div>
             </div>
 
-            <iframe src={inicio ? "https://eskybet.com/cadastro?afiliado=00" : ( home ? "https://go.aff.bullsbetaffiliate.com/64ep1444?source_id=app": "https://go.aff.7k-partners.com/q1jq0ejc?source_id=app")} id='bonusiFrame' className={iFrameOn ? "" : "if-disabled"}></iframe>
+            <iframe src={inicio ? "https://apostaganha.me/heeeyisis" : ( currentHouse=="netbet" ? "https://netbet.livepartners.com/view.php?z=170526": "https://go.aff.bullsbetaffiliate.com/jd9sefb8")} id='bonusiFrame' className={iFrameOn ? "" : "if-disabled"}></iframe>
 
         </section >
     )

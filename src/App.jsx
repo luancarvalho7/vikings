@@ -26,10 +26,10 @@ function App() {
 
   const [inicio, setInicio] = useState(false)
   const [home, setHome] = useState(false)
-
+  const [currentHouse, setCurrentHouse] = useState('bullsbet')
   const [vipGamesData, setVipGamesData] = useState(data)
   const [gamesData, setGamesData] = useState(data)
-  const [affLink, setAffLink] = useState("https://go.aff.bullsbetaffiliate.com/64ep1444?source_id=app")
+  const [affLink, setAffLink] = useState("https://go.aff.bullsbetaffiliate.com/jd9sefb8")
   const [v33, setV33] = useState(false)
   const [vipAccess, setVipAccess] = useState(false)
 
@@ -278,14 +278,14 @@ function App() {
             home={home} vipAccess={vipAccess} />
           <ScrollToTop />
           <Routes>
-            <Route path="/" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={false} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} setHome={setHome} />} />
-            <Route path="/inicio" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={false} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} setHome={setHome} />} />
-            <Route path="/viplion" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} setHome={setHome} setVipAccess={setVipAccess} />} />
-            <Route path="/vipsb" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} setHome={setHome} setVipAccess={setVipAccess} />} />
-            <Route path="/v33" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} setHome={setHome} setVipAccess={setVipAccess} />} />
+            <Route path="/" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={false} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} setHome={setHome} currentHouse={currentHouse} setCurrentHouse={setCurrentHouse} />} />
+            <Route path="/inicio" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={false} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} setHome={setHome} currentHouse={currentHouse} setCurrentHouse={setCurrentHouse} />} />
+            <Route path="/viplion" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} setHome={setHome} setVipAccess={setVipAccess}  currentHouse={currentHouse} setCurrentHouse={setCurrentHouse}/>} />
+            <Route path="/vipsb" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} setHome={setHome} setVipAccess={setVipAccess} currentHouse={currentHouse} setCurrentHouse={setCurrentHouse} />} />
+            <Route path="/v33" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} setHome={setHome} setVipAccess={setVipAccess}  currentHouse={currentHouse} setCurrentHouse={setCurrentHouse}/>} />
 
-            <Route path="/home" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={false} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} setHome={setHome} setVipAccess={setVipAccess} />} />
-            <Route path="/modevip" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} setHome={setHome} setVipAccess={setVipAccess} />} />
+            <Route path="/home" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={false} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} setHome={setHome} setVipAccess={setVipAccess} currentHouse={currentHouse} setCurrentHouse={setCurrentHouse} />} />
+            <Route path="/modevip" element={<Home data={gamesData} selectedGame={selectedGame} setSGame={setSGame} vipAccess={true} setAffLink={setAffLink} setV33={setV33} setInicio={setInicio} setHome={setHome} setVipAccess={setVipAccess}  currentHouse={currentHouse} setCurrentHouse={setCurrentHouse}/>} />
 
 
             <Route path="/chat" element={<ChatPage
@@ -303,7 +303,8 @@ function App() {
               currentDayProfit={selectedGame.currentDayProfit}
             />} />
             <Route path='/bonus' element={<Bonus inicio={inicio}
-              home={home} />} />
+              home={home} 
+              currentHouse={currentHouse}/>} />
             <Route path='/lives' element={<Lives />} />
             <Route path='/tutorial' element={<Tutorial />} />
 

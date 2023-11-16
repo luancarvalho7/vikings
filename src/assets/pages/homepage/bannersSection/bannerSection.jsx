@@ -26,11 +26,11 @@ export function BannerSection() {
                 modules={[Autoplay]}
                 className="bannerSwiper"
             >
-                <SwiperSlide><img src="https://i.postimg.cc/1zRXXtTb/demo-ban01.png" alt="" onClick={() => { }} /></SwiperSlide>
-                <SwiperSlide><img src="https://i.postimg.cc/4dm3v0X5/demo-ban02.png" alt="" style={{ cursor: "pointer" }}
-                    onClick={() => { window.open("https://www.instagram.com/vinicim_bf/") }} /></SwiperSlide>
-                <SwiperSlide><img src="https://i.postimg.cc/ZR25wLRh/demo-ban-VIP.png" alt="" style={{ cursor: "pointer" }}
-                    onClick={() => { window.open("https://www.instagram.com/vinicim_bf/", "_blank")
+                <SwiperSlide><img src="https://i.postimg.cc/ZR42LB9v/sorteio2k.webp" alt="" onClick={() => { }} /></SwiperSlide>
+                <SwiperSlide><img src="https://i.postimg.cc/0jN4LT08/community.webp" alt="" style={{ cursor: "pointer" }}
+                    onClick={() => { window.open("https://chat.whatsapp.com/FIqMuSVgTYg9j8nfcHd7Sa") }} /></SwiperSlide>
+                <SwiperSlide><img src="https://i.postimg.cc/brF58mm1/vip.webp" alt="" style={{ cursor: "pointer" }}
+                    onClick={() => { window.open("https://checkout.b4you.com.br/VY0X7rb_rE", "_blank")
                     }} /></SwiperSlide>
             </Swiper>
         </>

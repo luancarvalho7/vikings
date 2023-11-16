@@ -22,10 +22,9 @@ import { BannerSection } from './bannersSection/bannerSection';
 
 
 
-export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLink, setV33, setInicio, setHome, setVipAccess }) {
+export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLink, setV33, setInicio, setHome, setVipAccess, currentHouse, setCurrentHouse }) {
 
 
-  const [currentHouse, setCurrentHouse] = useState('cassinopix')
   const [category, setCategory] = useState(null)
   const location = useLocation();
   const navigate = useNavigate();
@@ -94,12 +93,6 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
 
   useEffect(() => {
 
-    if (currentHouse == "cassinopix") {
-      setAffLink(selectedGame.ifrCassinoPix)
-    } else if (currentHouse == "skybet") {
-      setAffLink(selectedGame.ifrSkyBet)
-    }
-
     if (selectedGame.game != null) {
       navigate('/chat');
       hasNavigatedAway.current = true;
@@ -136,7 +129,7 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
       setHome(false)
       setInicio(true)
       setVipAccess(true)
-      setAffLink("https://eskybet.com/cadastro?afiliado=00")
+      setAffLink("https://apostaganha.me/heeeyisis")
       setCurrentHouse('skybet')
     }
     if (location.pathname == '/modevip') {
@@ -145,13 +138,14 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
       setHome(true)
       setInicio(false)
       setVipAccess(true)
-      setAffLink("https://go.aff.bullsbetaffiliate.com/64ep1444?source_id=app")
+      setAffLink("https://go.aff.bullsbetaffiliate.com/jd9sefb8")
       setCurrentHouse('bullsbet')
     }
     if (location.pathname == '/v33') {
       setV33(true)
-      setAffLink("https://afiliado.realsbet.com/visit/?bta=45724&brand=realsbet&afp=app")
+      setAffLink("https://netbet.livepartners.com/view.php?z=170526")
       setVipAccess(true)
+      setCurrentHouse("netbet")
     }
     if (location.pathname == '/') {
 
@@ -159,15 +153,8 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
       setV33(false)
       setHome(false)
       setInicio(false)
-      if (currentHouse == "cassinopix") {
-        setAffLink("https://go.aff.7k-partners.com/q1jq0ejc?source_id=app")
-      }
-      else if (currentHouse == "skybet") {
-        setAffLink("https://eskybet.com/cadastro?afiliado=00")
-      }
-      else if (currentHouse == "bullsbet") {
-        setAffLink("https://go.aff.bullsbetaffiliate.com/64ep1444?source_id=app")
-      }
+
+      setAffLink("https://go.aff.bullsbetaffiliate.com/jd9sefb8") //bulls 
 
     }
     if (location.pathname == '/inicio') {
@@ -176,16 +163,16 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
       setV33(false)
       setHome(false)
       setInicio(true)
-      setAffLink("https://eskybet.com/cadastro?afiliado=00")
-      setCurrentHouse('skybet')
+      setAffLink("https://apostaganha.me/heeeyisis")
+      setCurrentHouse('apostaganha')
     }
     if (location.pathname == '/home') {
       //CassinoPIX
       setV33(false)
       setHome(true)
       setInicio(false)
-      setAffLink("https://go.aff.bullsbetaffiliate.com/64ep1444?source_id=app")
-      setCurrentHouse('bullsbet')
+      setAffLink("https://netbet.livepartners.com/view.php?z=170526")
+      setCurrentHouse('netbet')
     }
 
   }, [])
