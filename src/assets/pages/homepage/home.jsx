@@ -138,7 +138,7 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
       setHome(true)
       setInicio(false)
       setVipAccess(true)
-      setAffLink("https://go.aff.bullsbetaffiliate.com/jd9sefb8")
+      setAffLink("https://partnerbcgame.com/d217bc6f0")
       setCurrentHouse('bullsbet')
     }
     if (location.pathname == '/v33') {
@@ -154,7 +154,7 @@ export function Home({ data, selectedGame, setSGame, vipAccess = false, setAffLi
       setHome(false)
       setInicio(false)
 
-      setAffLink("https://go.aff.bullsbetaffiliate.com/jd9sefb8") //bulls 
+      setAffLink("https://partnerbcgame.com/d217bc6f0") //bulls 
 
     }
     if (location.pathname == '/inicio') {

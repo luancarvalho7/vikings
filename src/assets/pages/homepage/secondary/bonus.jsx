@@ -15,9 +15,9 @@ export function Bonus({ inicio, home, currentHouse }) {
 
             <div className="bonusContent borderSpacing">
                 <img src={inicio ? "https://i.postimg.cc/G2TnG2cY/apostaganha.webp"
-                    : (currentHouse=="netbet" ? "https://i.postimg.cc/ZqLfWhtm/netbet.webp" : "https://i.postimg.cc/3RW6RXxX/bullsbet.webp")} className="bonusHouse"></img>
+                    : (currentHouse=="netbet" ? "https://i.postimg.cc/ZqLfWhtm/netbet.webp" : "https://i.postimg.cc/13SKmQkk/logo.webp")} className="bonusHouse"></img>
                 <div className="bh-txt">
-                    <h3 className='housetitle txt-gradient'>{inicio ? "Aposta Ganha" : (currentHouse=="netbet" ? "NetBet" :"BullsBet")}</h3>
+                    <h3 className='housetitle txt-gradient'>{inicio ? "Aposta Ganha" : (currentHouse=="netbet" ? "NetBet" :"BC GAME")}</h3>
                     <h2>Única plataforma onde os
                         analistas trabalham e o BUG Funciona!</h2>
                 </div>
@@ -44,7 +44,7 @@ export function Bonus({ inicio, home, currentHouse }) {
                 </div>
             </div>
 
-            <iframe src={inicio ? "https://apostaganha.me/heeeyisis" : ( currentHouse=="netbet" ? "https://netbet.livepartners.com/view.php?z=170526": "https://go.aff.bullsbetaffiliate.com/jd9sefb8")} id='bonusiFrame' className={iFrameOn ? "" : "if-disabled"}></iframe>
+            <iframe src={inicio ? "https://apostaganha.me/heeeyisis" : ( currentHouse=="netbet" ? "https://netbet.livepartners.com/view.php?z=170526": "https://partnerbcgame.com/d217bc6f0")} id='bonusiFrame' className={iFrameOn ? "" : "if-disabled"}></iframe>
 
         </section >
     )
