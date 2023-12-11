@@ -30,7 +30,7 @@ export function BannerSection() {
                 <SwiperSlide><img src="https://i.postimg.cc/0jN4LT08/community.webp" alt="" style={{ cursor: "pointer" }}
                     onClick={() => { window.open("https://chat.whatsapp.com/FIqMuSVgTYg9j8nfcHd7Sa") }} /></SwiperSlide>
                 <SwiperSlide><img src="https://i.postimg.cc/brF58mm1/vip.webp" alt="" style={{ cursor: "pointer" }}
-                    onClick={() => { window.open("https://vkngsapp.vercel.app/", "_blank")
+                    onClick={() => { window.open("https://checkout.perfectpay.com.br/pay/PPU38CNKQBT", "_blank")
                     }} /></SwiperSlide>
             </Swiper>
         </>
